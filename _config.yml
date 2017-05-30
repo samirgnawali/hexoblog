@@ -70,3 +70,18 @@ theme: tranquilpeak
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
+
+algolia:
+  appId: "3NSJ951A28"
+  apiKey: "98213b2aded47f5f92c6507571bfaf73"
+  adminApiKey: "7625363fdae6b347b8b3a38ceecba9d6"
+  chunkSize: 5000
+  indexName: "vikku-hexo-blog"
+  fields:
+    - title
+    - tags
+    - slug
+    - excerpt
+    - excerpt:strip
+    - photos
+    - gallery

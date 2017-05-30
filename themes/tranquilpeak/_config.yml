@@ -104,9 +104,9 @@ sidebar:
 #     class: open-algolia-search
 header:
     right_link:
-        url: /#about
-        icon:
-        class:
+        url: /#search
+        icon: search
+        class: open-algolia-search
 
 
 # Author
