@@ -85,3 +85,8 @@ algolia:
     - excerpt:strip
     - photos
     - gallery
+
+feed:
+    type: atom
+    path: atom.xml
+    limit: 20
