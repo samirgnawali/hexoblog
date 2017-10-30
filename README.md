@@ -1,3 +1,3 @@
 # hexoblog
 
-My personal blog (vksbhandary.ml)
+My personal blog (https://vikasbhandary.com.np/)
