@@ -1,7 +1,7 @@
 ---
 title: Create your own Free Blog Site
 date: 2017-10-30 16:34:29
-tags:Hexo blog
+tags: Hexo blog
 ---
 This might sound crazy but, I can tell you that there is a way to create and maintain your own blog by using site [Netlify](https://www.netlify.com/). Using Netlify you can create your one page site for demo purpose free of cost, ofcourse it provides many features for paid users. Now in this post i will be using [Hexo](https://hexo.io/) which is a fast, simple & powerful blog framework.
 
