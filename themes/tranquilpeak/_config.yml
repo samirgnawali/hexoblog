@@ -118,7 +118,7 @@ author:
     # or in `source/assets/images/` (production)
     # or you can use an external url
     # Overwritten by your gravatar image if `gravatar_email` is filled
-    picture: https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAnLAAAAJDJmN2JkYzY4LTQ5NzQtNGQxNC05ZmI0LWZkOTAxNjQ4NmNmZA.jpg
+    picture: profile.jpg
     # Your Twitter username without the @. E.g : `tranquilpeak`
     twitter: vksbhandary
     # Your personal google plus profile id, not your blog or business page id.
