@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://vikasbhandary.com.np/"/>
-  <updated>2017-10-30T16:48:35.702Z</updated>
+  <updated>2017-10-31T12:00:32.699Z</updated>
   <id>https://vikasbhandary.com.np/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="https://vikasbhandary.com.np/Create-your-own-Free-Blog-Site/"/>
     <id>https://vikasbhandary.com.np/Create-your-own-Free-Blog-Site/</id>
     <published>2017-10-30T16:34:29.000Z</published>
-    <updated>2017-10-30T16:48:35.702Z</updated>
+    <updated>2017-10-31T12:00:32.699Z</updated>
     
     <content type="html"><![CDATA[<p>This might sound crazy but, I can tell you that there is a way to create and maintain your own blog by using site <a href="https://www.netlify.com/" target="_blank" rel="external">Netlify</a>. Using Netlify you can create your one page site for demo purpose free of cost, ofcourse it provides many features for paid users. Now in this post i will be using <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a> which is a fast, simple &amp; powerful blog framework.</p>
+<a id="more"></a>
 <h2 id="Lets-Start-our-blog"><a href="#Lets-Start-our-blog" class="headerlink" title="Lets Start our blog"></a>Lets Start our blog</h2><h3 id="Fork-hexo-blog"><a href="#Fork-hexo-blog" class="headerlink" title="Fork hexo blog"></a>Fork hexo blog</h3><p>Visit this <a href="https://github.com/vksbhandary/hexoblog" target="_blank" rel="external">link</a> and fork my repository or follow following steps to create a new hexo blog.</p>
 <h4 id="Setup-Hexo"><a href="#Setup-Hexo" class="headerlink" title="Setup Hexo"></a>Setup Hexo</h4><p>Execute following commands in bash to setup hexo and create new blog</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-cli -g</div><div class="line">$ hexo init blog</div><div class="line">$ <span class="built_in">cd</span> blog</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
@@ -51,39 +52,12 @@
     
     <summary type="html">
     
-      &lt;p&gt;This might sound crazy but, I can tell you that there is a way to create and maintain your own blog by using site &lt;a href=&quot;https://www.ne
+      &lt;p&gt;This might sound crazy but, I can tell you that there is a way to create and maintain your own blog by using site &lt;a href=&quot;https://www.netlify.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Netlify&lt;/a&gt;. Using Netlify you can create your one page site for demo purpose free of cost, ofcourse it provides many features for paid users. Now in this post i will be using &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt; which is a fast, simple &amp;amp; powerful blog framework.&lt;/p&gt;
     
     </summary>
     
     
       <category term="Hexo blog" scheme="https://vikasbhandary.com.np/tags/Hexo-blog/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://vikasbhandary.com.np/hello-world/"/>
-    <id>https://vikasbhandary.com.np/hello-world/</id>
-    <published>2017-10-30T16:32:53.042Z</published>
-    <updated>2017-10-30T16:32:53.042Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
     
   </entry>
   
