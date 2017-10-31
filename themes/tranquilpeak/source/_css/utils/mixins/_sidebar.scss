@@ -43,7 +43,9 @@
     ul.sidebar-social {
         li.sidebar-button {
             text-align: left;
-            text-decoration: none;
+            list-style-type: none;
+            padding: 0;
+            margin: 0 0 20px;
             .sidebar-button-link {
                 text-align:   left;
                 width:        auto;
@@ -144,7 +146,9 @@
         display: flex;
         li.sidebar-button {
             text-align: left;
-            text-decoration: none;
+            list-style-type: none;
+            padding: 0;
+            margin: 0 0 20px;
             .sidebar-button-link {
                 text-align:   left;
                 width:        auto;
