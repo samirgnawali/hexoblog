@@ -59,7 +59,7 @@ For information on creating repository on github fillow [link](https://help.gith
 
 Signup and create site using your github. Their wizerd shows three steps, 1 Connect to your git provider, 2 Pick your repository, 3 Build options, and deploy!
 
-we need to setup Build options
+we need to provide Build options
 
 ``` bash
  npm install; cd themes/tranquilpeak; npm install; bower install; grunt buildProd ; cd .. ; cd .. ; hexo generate; hexo algolia;
