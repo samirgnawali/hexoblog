@@ -22,20 +22,41 @@
                 <% } %>
             </div>
         <% } %>
+        
+        
+
+        <ul class="sidebar-buttons">
+                    <% for (var n in theme.sidebar["menu"]) { %>
+                        <li class="sidebar-button">
+                            <% if (url_for(theme.sidebar["menu"][n].url).indexOf(config.url) < 0 && url_for(theme.sidebar["menu"][n].url).indexOf(':') >= 0) { %>
+                                <a  class="sidebar-button-link <% if (theme.sidebar["menu"][n].class) { %><%= theme.sidebar["menu"][n].class %><% } %>" href="<%- url_for(theme.sidebar["menu"][n].url) %>" target="_blank" rel="noopener">
+                            <% } else { %>
+                                <a  class="sidebar-button-link <% if (theme.sidebar["menu"][n].class) { %><%= theme.sidebar["menu"][n].class %><% } %>"
+                                    <% if (theme.sidebar["menu"][n].url.indexOf("/") === 0 && theme.sidebar["menu"][n].url.length === 1) { %> href="<%- url_for(' ') %>"
+                                    <% } else if (theme.sidebar["menu"][n].url.indexOf("/") === 0) { %> href="<%- url_for(theme.sidebar["menu"][n].url.substr(1)) %>"
+                                    <% } else { %> href="<%- url_for(theme.sidebar["menu"][n].url) %>"<% } %>
+                                >
+                            <% } %>
+                                <i class="sidebar-button-icon fa fa-lg <%= 'fa-' + theme.sidebar["menu"][n].icon %>"></i>
+                                 <span class="sidebar-button-desc"><%= __(theme.sidebar["menu"][n].title) %></span>
+                            </a>
+                    </li>
+                    <% } %>
+                </ul>
          <ul class="sidebar-buttons">
-            <% for (var n in theme.sidebar["menu"]) { %>
+            <% for (var n in theme.sidebar["rss"]) { %>
                 <li class="sidebar-button">
-                    <% if (url_for(theme.sidebar["menu"][n].url).indexOf(config.url) < 0 && url_for(theme.sidebar["menu"][n].url).indexOf(':') >= 0) { %>
-                        <a  class="sidebar-button-link <% if (theme.sidebar["menu"][n].class) { %><%= theme.sidebar["menu"][n].class %><% } %>" href="<%- url_for(theme.sidebar["menu"][n].url) %>" target="_blank" rel="noopener">
+                    <% if (url_for(theme.sidebar["rss"][n].url).indexOf(config.url) < 0 && url_for(theme.sidebar["rss"][n].url).indexOf(':') >= 0) { %>
+                        <a  class="sidebar-button-link <% if (theme.sidebar["rss"][n].class) { %><%= theme.sidebar["rss"][n].class %><% } %>" href="<%- url_for(theme.sidebar["rss"][n].url) %>" target="_blank" rel="noopener">
                     <% } else { %>
-                        <a  class="sidebar-button-link <% if (theme.sidebar["menu"][n].class) { %><%= theme.sidebar["menu"][n].class %><% } %>"
-                            <% if (theme.sidebar["menu"][n].url.indexOf("/") === 0 && theme.sidebar["menu"][n].url.length === 1) { %> href="<%- url_for(' ') %>"
-                            <% } else if (theme.sidebar["menu"][n].url.indexOf("/") === 0) { %> href="<%- url_for(theme.sidebar["menu"][n].url.substr(1)) %>"
-                            <% } else { %> href="<%- url_for(theme.sidebar["menu"][n].url) %>"<% } %>
+                        <a  class="sidebar-button-link <% if (theme.sidebar["rss"][n].class) { %><%= theme.sidebar["rss"][n].class %><% } %>"
+                            <% if (theme.sidebar["rss"][n].url.indexOf("/") === 0 && theme.sidebar["rss"][n].url.length === 1) { %> href="<%- url_for(' ') %>"
+                            <% } else if (theme.sidebar["rss"][n].url.indexOf("/") === 0) { %> href="<%- url_for(theme.sidebar["rss"][n].url.substr(1)) %>"
+                            <% } else { %> href="<%- url_for(theme.sidebar["rss"][n].url) %>"<% } %>
                         >
                     <% } %>
-                        <i class="sidebar-button-icon fa fa-lg <%= 'fa-' + theme.sidebar["menu"][n].icon %>"></i>
-                         <span class="sidebar-button-desc"><%= __(theme.sidebar["menu"][n].title) %></span>
+                        <i class="sidebar-button-icon fa fa-lg <%= 'fa-' + theme.sidebar["rss"][n].icon %>"></i>
+                         <span class="sidebar-button-desc"><%= __(theme.sidebar["rss"][n].title) %></span>
                     </a>
             </li>
             <% } %>

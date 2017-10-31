@@ -101,6 +101,18 @@
             @include sidebar-md;
         }
     }
+    
+    #sidebar[data-behavior="2"] ul.sidebar-buttons li.sidebar-button {
+    text-align: left;
+    display: flex;
+    /* list-style-type: none; */
+    }
+    
+    #sidebar[data-behavior="2"] ul.sidebar-buttons li.sidebar-button .sidebar-button-link {
+    padding-left: 13px;
+
+    }
+    
 }
 
 // Define sidebar behavior configured in `_config.yml` for large screen
