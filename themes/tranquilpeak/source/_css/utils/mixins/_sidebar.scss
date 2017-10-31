@@ -43,13 +43,14 @@
     ul.sidebar-social {
         li.sidebar-button {
             text-align: left;
-            
+            text-decoration: none;
             .sidebar-button-link {
                 text-align:   left;
                 width:        auto;
                 padding-left: 13px;
                 padding-top:  0;
-
+                color: #ebebeb;
+                text-decoration: none;
                 // Font-awesome icon
                 .sidebar-button-icon {
                     font-size:      2rem;
@@ -143,7 +144,7 @@
         display: flex;
         li.sidebar-button {
             text-align: left;
-            
+            text-decoration: none;
             .sidebar-button-link {
                 text-align:   left;
                 width:        auto;
