@@ -47,7 +47,7 @@ $ npm install hexo-algoliasearch
 ### Setup blog and theme
 
 There are number of things you must modify like site URL, Author name, Site title etc. The themes also provide many options to give users flexibility to change things on their blogs. Themes can support various services like analytics, facebook insights etc. Generally settings are to be set in _config.yml file. 
-
+In order to get more info on integrated services configuration in hexo-theme-tranquilpeak theme visit this [link](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/blob/master/docs/user.md#integrated-services-configuration).
 
 ### Add blog to repository
 

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://vikasbhandary.com.np/"/>
-  <updated>2017-10-31T13:42:11.018Z</updated>
+  <updated>2017-10-31T15:42:00.790Z</updated>
   <id>https://vikasbhandary.com.np/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://vikasbhandary.com.np/Create-your-own-Free-Blog-Site/"/>
     <id>https://vikasbhandary.com.np/Create-your-own-Free-Blog-Site/</id>
     <published>2017-10-30T16:34:29.000Z</published>
-    <updated>2017-10-31T13:42:11.018Z</updated>
+    <updated>2017-10-31T15:42:00.790Z</updated>
     
     <content type="html"><![CDATA[<p>There are a lot of blogging platfroms like <a href="https://wordpress.com/" target="_blank" rel="external">wordpress</a> and <a href="https://www.blogger.com" target="_blank" rel="external">blogger</a>. Personally, I was never satisfied with the flexibility of these platforms. So I always wanted a free option to create and maintain blogs. </p>
 <p>We can create and maintain our own blog by using site <a href="https://www.netlify.com/" target="_blank" rel="external">Netlify</a>. It is basically a frontend hosting site, with a lot of cool features. It lets us create simple websites free of cost and it provides many advanced features for paid users. To create a blog like the one you are visiting right now for free, we will be using <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a> which is a fast, simple &amp; powerful blog framework.</p>
@@ -31,7 +31,7 @@
 <p>For more information visit <a href="https://github.com/hexojs/hexo#installation" target="_blank" rel="external">link</a>, it has all the necessary steps to get you started.</p>
 <h4 id="Install-theme"><a href="#Install-theme" class="headerlink" title="Install theme"></a>Install theme</h4><p>For my convenience i have installed theme <a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak" target="_blank" rel="external">hexo-theme-tranquilpeak</a>. It is well documented and support various features. You can choose any theme you want from <a href="https://hexo.io/themes/" target="_blank" rel="external">site</a>. Execute following commands to install theme.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> themes</div><div class="line">$ git <span class="built_in">clone</span> https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak</div><div class="line">$ <span class="built_in">cd</span> hexo-theme-tranquilpeak</div><div class="line">$ npm install</div><div class="line">$ bower install</div><div class="line">$ <span class="built_in">cd</span> ../..</div><div class="line">$ npm install hexo-algoliasearch</div></pre></td></tr></table></figure>
-<h3 id="Setup-blog-and-theme"><a href="#Setup-blog-and-theme" class="headerlink" title="Setup blog and theme"></a>Setup blog and theme</h3><p>There are number of things you must modify like site URL, Author name, Site title etc. The themes also provide many options to give users flexibility to change things on their blogs. Themes can support various services like analytics, facebook insights etc. Generally settings are to be set in _config.yml file. </p>
+<h3 id="Setup-blog-and-theme"><a href="#Setup-blog-and-theme" class="headerlink" title="Setup blog and theme"></a>Setup blog and theme</h3><p>There are number of things you must modify like site URL, Author name, Site title etc. The themes also provide many options to give users flexibility to change things on their blogs. Themes can support various services like analytics, facebook insights etc. Generally settings are to be set in _config.yml file.<br>In order to get more info on integrated services configuration in hexo-theme-tranquilpeak theme visit this <a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/blob/master/docs/user.md#integrated-services-configuration" target="_blank" rel="external">link</a>.</p>
 <h3 id="Add-blog-to-repository"><a href="#Add-blog-to-repository" class="headerlink" title="Add blog to repository"></a>Add blog to repository</h3><p>For netlify we need to add our UI on repository, so pick any git client and upload your blog.</p>
 <p>For information on creating repository on github fillow <a href="https://help.github.com/articles/create-a-repo/" target="_blank" rel="external">link</a>.</p>
 <h3 id="Add-site-on-Netlify"><a href="#Add-site-on-Netlify" class="headerlink" title="Add site on Netlify"></a>Add site on Netlify</h3><p>Signup and create site using your github. Their wizerd shows three steps, 1 Connect to your git provider, 2 Pick your repository, 3 Build options, and deploy!</p>
