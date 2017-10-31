@@ -22,25 +22,47 @@
                 <% } %>
             </div>
         <% } %>
-        <% for (var i in theme.sidebar) { %>
-            <ul class="sidebar-buttons">
-            <% for (var n in theme.sidebar[i]) { %>
+         <ul class="sidebar-buttons">
+            <% for (var n in theme.sidebar["menu"]) { %>
                 <li class="sidebar-button">
-                    <% if (url_for(theme.sidebar[i][n].url).indexOf(config.url) < 0 && url_for(theme.sidebar[i][n].url).indexOf(':') >= 0) { %>
-                        <a  class="sidebar-button-link <% if (theme.sidebar[i][n].class) { %><%= theme.sidebar[i][n].class %><% } %>" href="<%- url_for(theme.sidebar[i][n].url) %>" target="_blank" rel="noopener">
+                    <% if (url_for(theme.sidebar["menu"][n].url).indexOf(config.url) < 0 && url_for(theme.sidebar["menu"][n].url).indexOf(':') >= 0) { %>
+                        <a  class="sidebar-button-link <% if (theme.sidebar["menu"][n].class) { %><%= theme.sidebar["menu"][n].class %><% } %>" href="<%- url_for(theme.sidebar["menu"][n].url) %>" target="_blank" rel="noopener">
                     <% } else { %>
-                        <a  class="sidebar-button-link <% if (theme.sidebar[i][n].class) { %><%= theme.sidebar[i][n].class %><% } %>"
-                            <% if (theme.sidebar[i][n].url.indexOf("/") === 0 && theme.sidebar[i][n].url.length === 1) { %> href="<%- url_for(' ') %>"
-                            <% } else if (theme.sidebar[i][n].url.indexOf("/") === 0) { %> href="<%- url_for(theme.sidebar[i][n].url.substr(1)) %>"
-                            <% } else { %> href="<%- url_for(theme.sidebar[i][n].url) %>"<% } %>
+                        <a  class="sidebar-button-link <% if (theme.sidebar["menu"][n].class) { %><%= theme.sidebar["menu"][n].class %><% } %>"
+                            <% if (theme.sidebar["menu"][n].url.indexOf("/") === 0 && theme.sidebar["menu"][n].url.length === 1) { %> href="<%- url_for(' ') %>"
+                            <% } else if (theme.sidebar["menu"][n].url.indexOf("/") === 0) { %> href="<%- url_for(theme.sidebar["menu"][n].url.substr(1)) %>"
+                            <% } else { %> href="<%- url_for(theme.sidebar["menu"][n].url) %>"<% } %>
                         >
                     <% } %>
-                        <i class="sidebar-button-icon fa fa-lg <%= 'fa-' + theme.sidebar[i][n].icon %>"></i>
-                        <span class="sidebar-button-desc"><%= __(theme.sidebar[i][n].title) %></span>
+                        <i class="sidebar-button-icon fa fa-lg <%= 'fa-' + theme.sidebar["menu"][n].icon %>"></i>
+                         <span class="sidebar-button-desc"><%= __(theme.sidebar["menu"][n].title) %></span>
                     </a>
             </li>
             <% } %>
         </ul>
+        
+        <ul class="sidebar-buttons">
+        <li class="sidebar-button">
+        
+        <% for (var n in theme.sidebar["author_links"]) { %>
+             <% if (url_for(theme.sidebar["author_links"][n].url).indexOf(config.url) < 0 && url_for(theme.sidebar["author_links"][n].url).indexOf(':') >= 0) { %>
+                        <a  class="sidebar-button-link <% if (theme.sidebar["author_links"][n].class) { %><%= theme.sidebar["author_links"][n].class %><% } %>" href="<%- url_for(theme.sidebar["author_links"][n].url) %>" target="_blank" rel="noopener">
+                    <% } else { %>
+                        <a  class="sidebar-button-link <% if (theme.sidebar["author_links"][n].class) { %><%= theme.sidebar["author_links"][n].class %><% } %>"
+                            <% if (theme.sidebar["author_links"][n].url.indexOf("/") === 0 && theme.sidebar["author_links"][n].url.length === 1) { %> href="<%- url_for(' ') %>"
+                            <% } else if (theme.sidebar["author_links"][n].url.indexOf("/") === 0) { %> href="<%- url_for(theme.sidebar["author_links"][n].url.substr(1)) %>"
+                            <% } else { %> href="<%- url_for(theme.sidebar["author_links"][n].url) %>"<% } %>
+                        >
+                    <% } %>
+                        <i class="sidebar-button-icon fa fa-lg <%= 'fa-' + theme.sidebar["author_links"][n].icon %>"></i>
+                       <!-- <span class="sidebar-button-desc"><%= __(theme.sidebar["author_links"][n].title) %></span> -->
+                    </a>   
         <% } %>
+                    
+            </li>
+            
+        </ul>
+        
+        
     </div>
 </nav>
