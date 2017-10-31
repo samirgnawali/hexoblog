@@ -50,7 +50,6 @@
             .sidebar-button-link {
                 text-align: center;
                 width:      100%;
-                padding-top:  0;
                 color: #ebebeb;
                 text-decoration: none;
                 // Font-awesome icon
@@ -63,17 +62,11 @@
                     line-height:    30px;
                     padding-top:    0;
                     vertical-align: middle;
-                    margin-right:   15px;
+                    
                 }
                 // Description (name) of a link
                 .sidebar-button-desc {
-                    display:        inline-block;
-                    width:          auto;
-                    height:         35px;
-                    line-height:    35px;
-                    font-size:      1.5rem;
-                    letter-spacing: 0.3px;
-                    vertical-align: middle;
+                    display: none;
                 }
             }
         }
