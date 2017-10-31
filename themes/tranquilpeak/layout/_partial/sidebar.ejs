@@ -20,6 +20,20 @@
                 <% if (__('author.bio')) { %>
                     <h5 class="sidebar-profile-bio"><%- markdown(__('author.bio')) %></h5>
                 <% } %>
+                <% for (var n in theme.sidebar["author_links"]) { %>
+             <% if (url_for(theme.sidebar["author_links"][n].url).indexOf(config.url) < 0 && url_for(theme.sidebar["author_links"][n].url).indexOf(':') >= 0) { %>
+                        <a  class="sidebar-button-link <% if (theme.sidebar["author_links"][n].class) { %><%= theme.sidebar["author_links"][n].class %><% } %>" href="<%- url_for(theme.sidebar["author_links"][n].url) %>" target="_blank" rel="noopener">
+                    <% } else { %>
+                        <a  class="sidebar-button-link <% if (theme.sidebar["author_links"][n].class) { %><%= theme.sidebar["author_links"][n].class %><% } %>"
+                            <% if (theme.sidebar["author_links"][n].url.indexOf("/") === 0 && theme.sidebar["author_links"][n].url.length === 1) { %> href="<%- url_for(' ') %>"
+                            <% } else if (theme.sidebar["author_links"][n].url.indexOf("/") === 0) { %> href="<%- url_for(theme.sidebar["author_links"][n].url.substr(1)) %>"
+                            <% } else { %> href="<%- url_for(theme.sidebar["author_links"][n].url) %>"<% } %>
+                        >
+                    <% } %>
+                        <i class="sidebar-button-icon fa fa-lg <%= 'fa-' + theme.sidebar["author_links"][n].icon %>"></i>
+                       <!-- <span class="sidebar-button-desc"><%= __(theme.sidebar["author_links"][n].title) %></span> -->
+                    </a>   
+        <% } %>
             </div>
         <% } %>
         
@@ -65,20 +79,7 @@
         <ul class="sidebar-buttons">
         <li class="sidebar-button">
         
-        <% for (var n in theme.sidebar["author_links"]) { %>
-             <% if (url_for(theme.sidebar["author_links"][n].url).indexOf(config.url) < 0 && url_for(theme.sidebar["author_links"][n].url).indexOf(':') >= 0) { %>
-                        <a  class="sidebar-button-link <% if (theme.sidebar["author_links"][n].class) { %><%= theme.sidebar["author_links"][n].class %><% } %>" href="<%- url_for(theme.sidebar["author_links"][n].url) %>" target="_blank" rel="noopener">
-                    <% } else { %>
-                        <a  class="sidebar-button-link <% if (theme.sidebar["author_links"][n].class) { %><%= theme.sidebar["author_links"][n].class %><% } %>"
-                            <% if (theme.sidebar["author_links"][n].url.indexOf("/") === 0 && theme.sidebar["author_links"][n].url.length === 1) { %> href="<%- url_for(' ') %>"
-                            <% } else if (theme.sidebar["author_links"][n].url.indexOf("/") === 0) { %> href="<%- url_for(theme.sidebar["author_links"][n].url.substr(1)) %>"
-                            <% } else { %> href="<%- url_for(theme.sidebar["author_links"][n].url) %>"<% } %>
-                        >
-                    <% } %>
-                        <i class="sidebar-button-icon fa fa-lg <%= 'fa-' + theme.sidebar["author_links"][n].icon %>"></i>
-                       <!-- <span class="sidebar-button-desc"><%= __(theme.sidebar["author_links"][n].title) %></span> -->
-                    </a>   
-        <% } %>
+        
                     
             </li>
             

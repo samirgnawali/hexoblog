@@ -126,15 +126,6 @@
             @include sidebar-md;
         }
     }
-    
-    #sidebar[data-behavior="2"] ul.sidebar-buttons li.sidebar-button {
-    display: flex;
-    }
-
-    #sidebar[data-behavior="2"] ul.sidebar-buttons li.sidebar-button .sidebar-button-link {
-        padding-left: 13px;
-    
-        }
 }
 
 @media #{$xlarge-and-up} {
