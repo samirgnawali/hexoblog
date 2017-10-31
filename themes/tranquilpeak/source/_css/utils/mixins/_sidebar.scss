@@ -68,13 +68,14 @@
     }
     // Buttons
     ul.sidebar-buttons {
+        display: flex;
         li.sidebar-button {
             text-align: left;
-
+            
             .sidebar-button-link {
                 text-align:   left;
                 width:        auto;
-                padding-left: 23px;
+                padding-left: 13px;
                 padding-top:  0;
 
                 // Font-awesome icon
