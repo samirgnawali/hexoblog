@@ -1,11 +1,16 @@
 ---
+disqusIdentifier: create-your-own-free-blog-site
 title: Create your own Free Blog Site
 date: 2017-10-30 16:34:29
 tags: Hexo blog
+keywords:
+- hexo blog
+- create your own free blog site
+- create free blog
 ---
-There are lot of blogging platfroms like [wordpress](https://wordpress.com/) and [blogger](https://www.blogger.com). Personally, I was never satisfied with the flexibility of these platforms. So I always wanted a free option to create and maintain blogs. 
+There are a lot of blogging platfroms like [wordpress](https://wordpress.com/) and [blogger](https://www.blogger.com). Personally, I was never satisfied with the flexibility of these platforms. So I always wanted a free option to create and maintain blogs. 
 
-We can create and maintain our own blog by using site [Netlify](https://www.netlify.com/). It is basically a frontend hosting site, with a lot of cool features. It lets us create simple websites free of cost, ofcourse it provides many advanced features for paid users. To create blog like the one you are visiting right now for free, we will be using [Hexo](https://hexo.io/) which is a fast, simple & powerful blog framework.
+We can create and maintain our own blog by using site [Netlify](https://www.netlify.com/). It is basically a frontend hosting site, with a lot of cool features. It lets us create simple websites free of cost and it provides many advanced features for paid users. To create a blog like the one you are visiting right now for free, we will be using [Hexo](https://hexo.io/) which is a fast, simple & powerful blog framework.
 
 <!-- more -->
 ## Lets Start our blog
