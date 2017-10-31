@@ -41,11 +41,12 @@
         }
     }
     ul.sidebar-social {
+        padding: 0;
+        margin: 0 0 20px;
         li.sidebar-button {
             text-align: left;
             list-style-type: none;
-            padding: 0;
-            margin: 0 0 20px;
+            
             .sidebar-button-link {
                 text-align:   left;
                 width:        auto;
@@ -144,11 +145,12 @@
     // Buttons
     ul.sidebar-social {
         display: flex;
+        padding: 0;
+        margin: 0 0 20px;
         li.sidebar-button {
             text-align: left;
             list-style-type: none;
-            padding: 0;
-            margin: 0 0 20px;
+            
             .sidebar-button-link {
                 text-align:   left;
                 width:        auto;
