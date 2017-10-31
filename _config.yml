@@ -90,3 +90,10 @@ feed:
     type: atom
     path: atom.xml
     limit: 20
+
+# Added after seeing user documentation page https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/blob/master/docs/user.md
+keywords:
+- vikas bhandary
+- programming blog
+- nepal developpers
+- machine learning log
