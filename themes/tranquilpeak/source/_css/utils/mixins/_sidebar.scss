@@ -41,34 +41,7 @@
         }
     }
     ul.sidebar-social {
-        text-align: center;
-        li.sidebar-button {
-            text-align: center;
-            list-style-type: none;
-            
-            .sidebar-button-link {
-                text-align: center;
-                width:      100%;
-                color: #ebebeb;
-                text-decoration: none;
-                // Font-awesome icon
-                .sidebar-button-icon {
-                    font-size:      2rem;
-                    display:        inline-block;
-                    text-align:     center;
-                    width:          30px;
-                    height:         30px;
-                    line-height:    30px;
-                    padding-top:    0;
-                    vertical-align: middle;
-                    
-                }
-                // Description (name) of a link
-                .sidebar-button-desc {
-                    display: none;
-                }
-            }
-        }
+        display: none;
     }
     // Used to animate the sidebar (pushed effect)
     &.pushed {
