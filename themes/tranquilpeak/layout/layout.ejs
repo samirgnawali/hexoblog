@@ -14,15 +14,7 @@
 <html lang="<%= config.language %>">
     <%- partial('_partial/head') %>
     <body>
-        
-        <% if (url_for(page.path) == '/index.html'){ %>     
-          yay!
-      <% } %>
-        <% if (url_for(page.path) == '/'){ %>     
-          <h1>welcome home</h1>
-      <% } %>
-      
-        <div id="blog">
+     <div id="blog">
             <%- partial('_partial/header', {sidebarBehavior: sidebarBehavior}) %>
             <%- partial('_partial/sidebar', {sidebarBehavior: sidebarBehavior}) %>
             <%- partial('_partial/post/header-cover', {post: page, sidebarBehavior: sidebarBehavior}) %>
