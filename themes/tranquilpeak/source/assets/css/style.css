@@ -6014,7 +6014,9 @@ figure.highlight,
   text-decoration: none; }
 
 .description {
-  text-align: justify;
+  text-align: justify; }
+
+.description a {
   color: inherit;
   text-decoration: none; }
 
