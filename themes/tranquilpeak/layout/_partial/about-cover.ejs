@@ -20,13 +20,13 @@
             
                         <div class="postShorten-header">
                             <h1 class="postShorten-title" itemprop="headline">
-                                 Hello, I am Vikas Bhandary.
+                                 Hello, I am <%= config.author %>.
                                 
                             </h1>
                         </div>
                         <div class="postShorten-content" itemprop="articleBody">
                             <p class="description">
-                                Technical professional with passion to create simple, usable and efficient Software, Websites and Mobile Apps. Experienced with all software development phases, ability to lead a team of developers and track their problems to hack overall team performance. Proven track record in latest web technologies and frameworks like: AngularJS, Node.js, Express.js ,MongoDB, Apache Cordova, ionic,Wordpress, PHP.
+                                <%=theme.aboutDescritionHTML%>
                             </p>
                             <p class="about-social">
                                 <a href="<%=theme.sidebar["author_links"]["twitter"].url%>?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-screen-name="false" data-show-count="false">Follow </a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
