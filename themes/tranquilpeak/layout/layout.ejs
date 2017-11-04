@@ -15,24 +15,39 @@
     <%- partial('_partial/head') %>
     <body>
      <div id="blog">
-            <%- partial('_partial/header', {sidebarBehavior: sidebarBehavior}) %>
-            <%- partial('_partial/sidebar', {sidebarBehavior: sidebarBehavior}) %>
-            <%- partial('_partial/post/header-cover', {post: page, sidebarBehavior: sidebarBehavior}) %>
-            <div id="main" data-behavior="<%= sidebarBehavior %>"
-                 class="<%= (page.coverImage ? 'hasCover' : '') %>
-                        <%= (page.coverMeta === 'out' ? 'hasCoverMetaOut' : 'hasCoverMetaIn') %>
-                        <%= (page.coverCaption ? 'hasCoverCaption' : '') %>">
-                <%- body %>
-                <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
-            </div>
-            <% if (is_post() && (page.actions === undefined || page.actions)) { %>
-                <div id="bottom-bar" class="post-bottom-bar" data-behavior="<%= sidebarBehavior %>">
-                    <%- partial('_partial/post/actions', {post: page}) %>
-                </div>
-                <%- partial('_partial/post/share-options', {post: page, sidebarBehavior: sidebarBehavior}) %>
-            <% } %>
-        </div>
-        <%- partial('_partial/about', null, {cache: !config.relative_link}) %>
+            <% if (is_current("about/") || url_for(page.path) == '/about/index.html') { %>
+            <%- partial('_partial/index-header') %>
+            <%- partial('_partial/sidebar', {sidebarBehavior: 5}) %>
+            <%- partial('_partial/about-cover', {post: page}) %>
+            <div id="main" data-behavior="5"
+                         class="<%= (page.coverImage ? 'hasCover' : '') %>
+                                <%= (page.coverMeta === 'out' ? 'hasCoverMetaOut' : 'hasCoverMetaIn') %>
+                                <%= (page.coverCaption ? 'hasCoverCaption' : '') %>">
+                        <%- body %>
+                        <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+                    </div>
+                    
+            <% } else { %>
+                <%- partial('_partial/header', {sidebarBehavior: sidebarBehavior}) %>
+                 <%- partial('_partial/sidebar', {sidebarBehavior: sidebarBehavior}) %>
+                 <%- partial('_partial/post/header-cover', {post: page, sidebarBehavior: sidebarBehavior}) %>
+                    <div id="main" data-behavior="<%= sidebarBehavior %>"
+                         class="<%= (page.coverImage ? 'hasCover' : '') %>
+                                <%= (page.coverMeta === 'out' ? 'hasCoverMetaOut' : 'hasCoverMetaIn') %>
+                                <%= (page.coverCaption ? 'hasCoverCaption' : '') %>">
+                        <%- body %>
+                        <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+                    </div>
+                    <% if (is_post() && (page.actions === undefined || page.actions)) { %>
+                        <div id="bottom-bar" class="post-bottom-bar" data-behavior="<%= sidebarBehavior %>">
+                            <%- partial('_partial/post/actions', {post: page}) %>
+                        </div>
+                        <%- partial('_partial/post/share-options', {post: page, sidebarBehavior: sidebarBehavior}) %>
+                    <% } %>
+                
+                 
+            <% } %>
+    </div>
         <%- partial('_partial/search', null, {cache: true}) %>
         <%- partial('_partial/cover', null, {cache: !config.relative_link}) %>
         <%- partial('_partial/script', {post: page}) %>
