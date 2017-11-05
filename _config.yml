@@ -98,3 +98,9 @@ keywords:
 - nepal developpers
 - machine learning blog
 - nepali freelancer
+
+# Sitemap options
+sitemap:
+    path: sitemap.xml
+    tag: false
+    category: false

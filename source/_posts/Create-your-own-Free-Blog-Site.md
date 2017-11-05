@@ -7,6 +7,7 @@ keywords:
 - hexo blog
 - create your own free blog site
 - create free blog
+sitemap: false
 ---
 There are a lot of blogging platfroms like [wordpress](https://wordpress.com/) and [blogger](https://www.blogger.com). Personally, I was never satisfied with the flexibility of these platforms. So I always wanted a free option to create and maintain blogs. 
 

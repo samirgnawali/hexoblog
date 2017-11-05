@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://vikasbhandary.com.np/"/>
-  <updated>2017-10-31T17:02:27.666Z</updated>
+  <updated>2017-11-05T16:15:57.006Z</updated>
   <id>https://vikasbhandary.com.np/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://vikasbhandary.com.np/Create-your-own-Free-Blog-Site/"/>
     <id>https://vikasbhandary.com.np/Create-your-own-Free-Blog-Site/</id>
     <published>2017-10-30T16:34:29.000Z</published>
-    <updated>2017-10-31T17:02:27.666Z</updated>
+    <updated>2017-11-05T16:15:57.006Z</updated>
     
     <content type="html"><![CDATA[<p>There are a lot of blogging platfroms like <a href="https://wordpress.com/" target="_blank" rel="external">wordpress</a> and <a href="https://www.blogger.com" target="_blank" rel="external">blogger</a>. Personally, I was never satisfied with the flexibility of these platforms. So I always wanted a free option to create and maintain blogs. </p>
 <p>We can create and maintain our own blog by using site <a href="https://www.netlify.com/" target="_blank" rel="external">Netlify</a>. It is basically a frontend hosting site, with a lot of cool features. It lets us create simple websites free of cost and it provides many advanced features for paid users. To create a blog like the one you are visiting right now for free, we will be using <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a> which is a fast, simple &amp; powerful blog framework.</p>
