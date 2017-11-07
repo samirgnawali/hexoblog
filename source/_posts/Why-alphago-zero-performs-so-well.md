@@ -9,9 +9,6 @@ keywords:
 disqusIdentifier: vksbhandary-why-alphago-zero-performs-so-well
 sitemap: false
 coverImage: https://vikasbhandary.com.np/assets/images/alphagozero.png
-thumbnailImage: https://vikasbhandary.com.np/assets/images/alphagozero_thumb.png
-
-thumbnailImagePosition: left
 coverMeta: out
 metaAlignment: center
 coverSize: partial
