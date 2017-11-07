@@ -1,0 +1,606 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Personal blog">
+    <title>Why alphago zero performs so well - Personal blog</title>
+    <meta name="author" content="Vikas Bhandary">
+    
+        <meta name="keywords" content="vikas bhandary,programming blog,nepal developpers,machine learning blog,nepali freelancer,AlphaGo,AlphaGo zero,Deepmind">
+    
+    
+        <link rel="icon" href="https://vikasbhandary.com.np/assets/images/fav.jpg">
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="Deepmind’s alphago made a huge leap in history of computer science, when it defeated world’s top professional players in march 2016, which was previously believed to be at least a decade away. But it">
+<meta name="keywords" content="AlphaGo,AlphaGo zero,Deepmind">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Why alphago zero performs so well">
+<meta property="og:url" content="https://vikasbhandary.com.np/Why-alphago-zero-performs-so-well/index.html">
+<meta property="og:site_name" content="Personal blog">
+<meta property="og:description" content="Deepmind’s alphago made a huge leap in history of computer science, when it defeated world’s top professional players in march 2016, which was previously believed to be at least a decade away. But it">
+<meta property="og:image" content="https://storage.googleapis.com/deepmind-live-cms/documents/TrainingTime-Graph-171019-r01.gif">
+<meta property="og:image" content="https://storage.googleapis.com/deepmind-live-cms/images/AlphaGo%2520Efficiency.width-1500.png">
+<meta property="og:updated_time" content="2017-11-07T11:11:35.189Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Why alphago zero performs so well">
+<meta name="twitter:description" content="Deepmind’s alphago made a huge leap in history of computer science, when it defeated world’s top professional players in march 2016, which was previously believed to be at least a decade away. But it">
+<meta name="twitter:image" content="https://storage.googleapis.com/deepmind-live-cms/documents/TrainingTime-Graph-171019-r01.gif">
+<meta name="twitter:creator" content="@vksbhandary">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://vikasbhandary.com.np/assets/images/profile.jpg"/>
+    
+    
+    
+        <meta property="og:image" content="https://vikasbhandary.com.np/Why-alphago-zero-performs-so-well/alphagozero.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://vikasbhandary.com.np/Why-alphago-zero-performs-so-well/alphagozero.png" />
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-nlmkflgvzbufyq5unslexintzhjgjja8swsftapiqontlucpkwqbin42rc1u.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-108920781-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+     <div id="blog">
+            
+                <!-- Define author's picture -->
+
+
+        <header id="header" data-behavior="5">
+            <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+            <div class="header-title">
+                <a class="header-title-link" href="/ ">Personal blog</a>
+            </div>
+            
+                
+                    <a  class="header-right-icon open-algolia-search"
+                        href="#search">
+                
+                
+                    <i class="fa fa-lg fa-search"></i>
+                
+                </a>
+            
+        </header>
+                 <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/about">
+                    <img class="sidebar-profile-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">Vikas Bhandary</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>Machine learning Enthusiast. Love creating things</p>
+</h5>
+                
+            </div>
+        
+        <ul class="sidebar-social">
+        <li class="sidebar-button">
+        
+        
+             
+                        <a  class="sidebar-button-link " href="https://github.com/vksbhandary/" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                       <!-- <span class="sidebar-button-desc">GitHub</span> -->
+                    </a>   
+        
+             
+                        <a  class="sidebar-button-link " href="https://twitter.com/vksbhandary" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                       <!-- <span class="sidebar-button-desc">Twitter</span> -->
+                    </a>   
+        
+             
+                        <a  class="sidebar-button-link " href="https://www.linkedin.com/in/vksbhandary/" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+                       <!-- <span class="sidebar-button-desc">LinkedIn</span> -->
+                    </a>   
+        
+             
+                        <a  class="sidebar-button-link " href="mailto:vksbhandary@gmail.com" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                       <!-- <span class="sidebar-button-desc">Mail</span> -->
+                    </a>   
+        
+                    
+            </li>
+            
+        </ul>
+         <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+                 
+        <div class="post-header-cover
+                    text-center
+                    post-header-cover--full"
+             style="background-image:url('/Why-alphago-zero-performs-so-well/alphagozero.png');"
+             data-behavior="5">
+            
+        </div>
+
+                    <div id="main" data-behavior="5"
+                         class="hasCover
+                                hasCoverMetaOut
+                                ">
+                        
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-center">
+    
+        <h1 class="post-title" itemprop="headline">
+            Why alphago zero performs so well
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-11-06T15:21:18+00:00">
+	
+		    Nov 06, 2017
+    	
+    </time>
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p><a href="https://deepmind.com/" target="_blank" rel="external">Deepmind’s</a> <a href="https://deepmind.com/research/alphago/" target="_blank" rel="external">alphago</a> made a huge leap in history of computer science, when it defeated world’s top professional players in march 2016, which was previously believed to be at least a decade away. But it didnt stop there, latest evolution of alphago called <a href="https://www.nature.com/articles/nature24270.epdf?author_access_token=VJXbVjaSHxFoctQQ4p2k4tRgN0jAjWel9jnR3ZoTv0PVW4gB86EEpGqTRDtpIz-2rmo8-KG06gqVobU5NSCFeHILHcVFUeMsbvwS-lxjqQGg98faovwjxeTUgZAUMnRQ" target="_blank" rel="external">“AlphaGO Zero”</a> has gone many steps further than its previous version as it has reached superhuman performance, winning 100–0 against the previous champoin AlphaGo. </p>
+<a id="more"></a>
+<h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#AlphaGo"><span class="toc-text">AlphaGo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AlphaGo-Zero"><span class="toc-text">AlphaGo Zero</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#How-well-it-worked"><span class="toc-text">How well it worked?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-it-worked"><span class="toc-text">Why it worked?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Less-complex-algorithm"><span class="toc-text">Less complex algorithm</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#More-efficient-Tree-search-algorithm"><span class="toc-text">More efficient Tree search algorithm</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less-Training-required"><span class="toc-text">Less Training required</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#What-AlphaGo-Zero’s-success-means"><span class="toc-text">What AlphaGo Zero’s success means?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Superhuman-AI-is-possible"><span class="toc-text">1. Superhuman AI is possible</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Using-human-Generated-Data-isn’t-necessarily-the-best-approach"><span class="toc-text">2. Using human Generated Data isn’t necessarily the best approach</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Shift-towards-narrow-AI-to-AGI"><span class="toc-text">3. Shift towards narrow AI to AGI</span></a></li></ol></li></ol></li></ol>
+<h2 id="AlphaGo"><a href="#AlphaGo" class="headerlink" title="AlphaGo"></a>AlphaGo</h2><p>Alphago was initially trained on dataset of expert moves of professional GO players. The process of learnig from labled training data is called <a href="https://en.wikipedia.org/wiki/Supervised_learning" target="_blank" rel="external">Supervised learning</a>. AlphaGO used a 13 layer neural network (NN) called “policy network” to guess next move and similar NN called “value network” to predict the winning rate. After this step, it was made to play with itself, this type of learning is called <a href="https://en.wikipedia.org/wiki/Reinforcement_learning" target="_blank" rel="external">Reinforcement learning</a>. Then finally Alphago combiles both policy and value network using algorithm called Monte Carlo tree search (MCTS) in order to find the next best move. </p>
+<h2 id="AlphaGo-Zero"><a href="#AlphaGo-Zero" class="headerlink" title="AlphaGo Zero"></a>AlphaGo Zero</h2><p><a href="https://deepmind.com/blog/alphago-zero-learning-scratch/" target="_blank" rel="external">AlphaGO Zero</a> was developed with goal to create AI with superhuman proficiency. AlphGo zero teaches itself GO by self-play reinforcement learning and doenst use the any human knowledge other than domain knowledge.<br>Other Key differences between AlphaGo zero and  are:</p>
+<ul>
+<li>AlphaGO zero uses one NN instead of two.</li>
+<li>AlphaGO zero uses black and white stones as input instead of hand picked features.</li>
+<li>AlphaGO zero uses simpler Tree search algorithm without using “rollouts”.</li>
+</ul>
+<p>In short, the algorithm was made more general and didn’t even used human generated data.</p>
+<h3 id="How-well-it-worked"><a href="#How-well-it-worked" class="headerlink" title="How well it worked?"></a>How well it worked?</h3><div class="figure center fig-100" style="width:;"><img class="fig-img" src="https://storage.googleapis.com/deepmind-live-cms/documents/TrainingTime-Graph-171019-r01.gif" alt="Source Deepmind blog post"><span class="caption">Source Deepmind blog post</span></div>
+<p>AlphaGo Zero outperformed <a href="https://www.nature.com/articles/nature24270.epdf?author_access_token=VJXbVjaSHxFoctQQ4p2k4tRgN0jAjWel9jnR3ZoTv0PVW4gB86EEpGqTRDtpIz-2rmo8-KG06gqVobU5NSCFeHILHcVFUeMsbvwS-lxjqQGg98faovwjxeTUgZAUMnRQ" target="_blank" rel="external">AlphaGo Lee</a> only after 36 hours of training, which was trained for several months. After continuous training for 72 hours AlphaGo Zero defeted the version of AlphaGo which defeated Lee Sedol. AlphaGo Lee was trained on a network of machines using 48 tensor processing units (TPUs) whereas AlphaGo Zero was trained on a single machine using 4 TPUs only.</p>
+<div class="figure center fig-100" style="width:;"><img class="fig-img" src="https://storage.googleapis.com/deepmind-live-cms/images/AlphaGo%2520Efficiency.width-1500.png" alt="Source Deepmind blog post"><span class="caption">Source Deepmind blog post</span></div>
+<h3 id="Why-it-worked"><a href="#Why-it-worked" class="headerlink" title="Why it worked?"></a>Why it worked?</h3><h4 id="Less-complex-algorithm"><a href="#Less-complex-algorithm" class="headerlink" title="Less complex algorithm"></a>Less complex algorithm</h4><p>AlphaGo Zero reduces the complexity of overall algorithm by using only self play. Therefore eliminates the usage of policy network. Single NN used in AlphaGo Zero combines the roles of both policy network and value network into single architecture. It takes current board position and it’s history as input and outputs both move probabilities and winnning probaability. </p>
+<h4 id="More-efficient-Tree-search-algorithm"><a href="#More-efficient-Tree-search-algorithm" class="headerlink" title="More efficient Tree search algorithm"></a>More efficient Tree search algorithm</h4><p>MCTS in AlphaGo Zero is viewed as a powerful policy improvement operator, as its calculations are used as a way to evaluate and train the NN. MCTS performs a search for winning moves. The policy evaluation estimates the value function from many sampled trajectories. The results of this search is then used to drive the learning of the neural network. So after every game, a new and potentially improved network is selected for the next self-play game.[<a href="https://medium.com/intuitionmachine/the-strange-loop-in-alphago-zeros-self-play-6e3274fcdd9f" target="_blank" rel="external">1</a>] </p>
+<h4 id="Less-Training-required"><a href="#Less-Training-required" class="headerlink" title="Less Training required"></a>Less Training required</h4><p>AlphaGo Zero uses less training (3.9 million games vs 30 millions games). The reason behind it is that AlphaGo Zero uses self play for training. The data produced by self-play had more advanced moves as compared to human counterpart. After every iteration, the network selects only the best moves, So it quickly gained the superhuman expert level.</p>
+<h3 id="What-AlphaGo-Zero’s-success-means"><a href="#What-AlphaGo-Zero’s-success-means" class="headerlink" title="What AlphaGo Zero’s success means?"></a>What AlphaGo Zero’s success means?</h3><h4 id="1-Superhuman-AI-is-possible"><a href="#1-Superhuman-AI-is-possible" class="headerlink" title="1. Superhuman AI is possible"></a>1. Superhuman AI is possible</h4><p>AlphaGo Zero is the very first system that can be called as Superhuman Artificial intelligence system. Although AlphaGo and AlphaGo Zero are very domain specific system, they have mastered strategic and tactical <a href="https://deepmind.com/blog/innovations-alphago/" target="_blank" rel="external">innovations</a> in the field of GO, which humans will study for many years.</p>
+<h4 id="2-Using-human-Generated-Data-isn’t-necessarily-the-best-approach"><a href="#2-Using-human-Generated-Data-isn’t-necessarily-the-best-approach" class="headerlink" title="2. Using human Generated Data isn’t necessarily the best approach"></a>2. Using human Generated Data isn’t necessarily the best approach</h4><p>AlphaGo Zero started learning from scatch and didnt need human knowledge other than the game rules. Although this might sound strange but by self-play method AlphaGo Zero was able to produce better and more accurate dataset. This demonstrate that a pure reinforcement learning approach is fully feasible without human knowledge or intervention.</p>
+<h4 id="3-Shift-towards-narrow-AI-to-AGI"><a href="#3-Shift-towards-narrow-AI-to-AGI" class="headerlink" title="3. Shift towards narrow AI to AGI"></a>3. Shift towards narrow AI to AGI</h4><p>The most important <a href="https://www.youtube.com/watch?v=WXHFqTvfFSw" target="_blank" rel="external">goal</a> of Deepmind was to understand the “knowledge”. Now that AlphaGo Zero was successful in gaining superhuman knowledge, it can be easily speculated that more tech companies will now try to implement it in broad domains of problems using more generalized aproach. Deepmind has already <a href="https://www.bloomberg.com/news/articles/2017-10-18/deepmind-s-superpowerful-ai-sets-its-sights-on-drug-discovery" target="_blank" rel="external">announced</a> that it will be using same approach for drug discovery.</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/AlphaGo/">AlphaGo</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Create-your-own-Free-Blog-Site/" data-tooltip="Create your own Free Blog Site">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://vikasbhandary.com.np/Why-alphago-zero-performs-so-well/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://vikasbhandary.com.np/Why-alphago-zero-performs-so-well/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://vikasbhandary.com.np/Why-alphago-zero-performs-so-well/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                        <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 Vikas Bhandary. All Rights Reserved.
+    </span>
+</footer>
+
+                    </div>
+                    
+                        <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Create-your-own-Free-Blog-Site/" data-tooltip="Create your own Free Blog Site">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://vikasbhandary.com.np/Why-alphago-zero-performs-so-well/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://vikasbhandary.com.np/Why-alphago-zero-performs-so-well/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://vikasbhandary.com.np/Why-alphago-zero-performs-so-well/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                        </div>
+                        <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://vikasbhandary.com.np/Why-alphago-zero-performs-so-well/">
+                    <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://vikasbhandary.com.np/Why-alphago-zero-performs-so-well/">
+                    <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://vikasbhandary.com.np/Why-alphago-zero-performs-so-well/">
+                    <i class="fa fa-google-plus"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+                    
+                
+                 
+            
+    </div>
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://vikasbhandary.com.np/Create-your-own-Free-Blog-Site/">
+                            <h3 class="media-heading">Create your own Free Blog Site</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Oct 30, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>There are a lot of blogging platfroms like <a href="https://wordpress.com/" target="_blank" rel="external">wordpress</a> and <a href="https://www.blogger.com" target="_blank" rel="external">blogger</a>. Personally, I was never satisfied with the flexibility of these platforms. So I always wanted a free option to create and maintain blogs. </p>
+<p>We can create and maintain our own blog by using site <a href="https://www.netlify.com/" target="_blank" rel="external">Netlify</a>. It is basically a frontend hosting site, with a lot of cool features. It lets us create simple websites free of cost and it provides many advanced features for paid users. To create a blog like the one you are visiting right now for free, we will be using <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a> which is a fast, simple &amp; powerful blog framework.</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="https://vikasbhandary.com.np/Why-alphago-zero-performs-so-well/">
+                            <img class="media-image" src="https://vikasbhandary.com.np/Why-alphago-zero-performs-so-well/alphagozero.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://vikasbhandary.com.np/Why-alphago-zero-performs-so-well/">
+                            <h3 class="media-heading">Why alphago zero performs so well</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Nov 6, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p><a href="https://deepmind.com/" target="_blank" rel="external">Deepmind’s</a> <a href="https://deepmind.com/research/alphago/" target="_blank" rel="external">alphago</a> made a huge leap in history of computer science, when it defeated world’s top professional players in march 2016, which was previously believed to be at least a decade away. But it didnt stop there, latest evolution of alphago called <a href="https://www.nature.com/articles/nature24270.epdf?author_access_token=VJXbVjaSHxFoctQQ4p2k4tRgN0jAjWel9jnR3ZoTv0PVW4gB86EEpGqTRDtpIz-2rmo8-KG06gqVobU5NSCFeHILHcVFUeMsbvwS-lxjqQGg98faovwjxeTUgZAUMnRQ" target="_blank" rel="external">“AlphaGO Zero”</a> has gone many steps further than its previous version as it has reached superhuman performance, winning 100–0 against the previous champoin AlphaGo. </p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                2 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover-v1.2.0.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-xapgurtca5k7lhxi3qosri7sqtffqe4v8sucwoqjb84uydz5jnlsykoliam1.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'https://vikasbhandary.com.np/Why-alphago-zero-performs-so-well/';
+                 
+                    this.page.identifier = 'vksbhandary-why-alphago-zero-performs-so-well';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'vksbhandary';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script>
+        var algoliaClient = algoliasearch('3NSJ951A28', '98213b2aded47f5f92c6507571bfaf73');
+        var algoliaIndex = algoliaClient.initIndex('vikku-hexo-blog');
+    </script>
+
+    </body>
+</html>
