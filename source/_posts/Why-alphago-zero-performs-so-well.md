@@ -12,9 +12,10 @@ coverImage: https://vikasbhandary.com.np/assets/images/alphagozero.png
 coverMeta: out
 metaAlignment: center
 coverSize: partial
+autoThumbnailImage: false
 
 ---
-[Deepmind's](https://deepmind.com/) [alphago](https://deepmind.com/research/alphago/) made a huge leap in history of computer science, when it defeated world's top professional players in march 2016, which was previously believed to be at least a decade away. But it didnt stop there, latest evolution of alphago called ["AlphaGO Zero"](https://www.nature.com/articles/nature24270.epdf?author_access_token=VJXbVjaSHxFoctQQ4p2k4tRgN0jAjWel9jnR3ZoTv0PVW4gB86EEpGqTRDtpIz-2rmo8-KG06gqVobU5NSCFeHILHcVFUeMsbvwS-lxjqQGg98faovwjxeTUgZAUMnRQ) has gone many steps further than its previous version as it has reached superhuman performance, winning 100–0 against the previous champoin AlphaGo. 
+[Deepmind's](https://deepmind.com/) [AlphaGo](https://deepmind.com/research/alphago/) made a huge leap in history of computer science, when it defeated world's top professional players in march 2016, which was previously believed to be at least a decade away. But it didnt stop there, latest evolution of AlphaGo called ["AlphaGO Zero"](https://www.nature.com/articles/nature24270.epdf?author_access_token=VJXbVjaSHxFoctQQ4p2k4tRgN0jAjWel9jnR3ZoTv0PVW4gB86EEpGqTRDtpIz-2rmo8-KG06gqVobU5NSCFeHILHcVFUeMsbvwS-lxjqQGg98faovwjxeTUgZAUMnRQ) has gone many steps further than its previous version as it has reached superhuman performance, winning 100–0 against the previous champoin AlphaGo. 
 
 <!-- more -->
 <!-- toc -->
@@ -52,12 +53,12 @@ AlphaGo Zero uses less training (3.9 million games vs 30 millions games). The re
 
 ### What AlphaGo Zero's success means?
 
-#### 1. Superhuman AI is possible
+#### Superhuman AI is possible
 AlphaGo Zero is the very first system that can be called as Superhuman Artificial intelligence system. Although AlphaGo and AlphaGo Zero are very domain specific system, they have mastered strategic and tactical [innovations](https://deepmind.com/blog/innovations-alphago/) in the field of GO, which humans will study for many years.
 
-#### 2. Using human Generated Data isn't necessarily the best approach 
+#### Using human Generated Data isn't necessarily the best approach 
 
 AlphaGo Zero started learning from scatch and didnt need human knowledge other than the game rules. Although this might sound strange but by self-play method AlphaGo Zero was able to produce better and more accurate dataset. This demonstrate that a pure reinforcement learning approach is fully feasible without human knowledge or intervention.
 
-#### 3. Shift towards narrow AI to AGI
+#### Shift towards narrow AI to AGI
 The most important [goal](https://www.youtube.com/watch?v=WXHFqTvfFSw) of Deepmind was to understand the "knowledge". Now that AlphaGo Zero was successful in gaining superhuman knowledge, it can be easily speculated that more tech companies will now try to implement it in broad domains of problems using more generalized aproach. Deepmind has already [announced](https://www.bloomberg.com/news/articles/2017-10-18/deepmind-s-superpowerful-ai-sets-its-sights-on-drug-discovery) that it will be using same approach for drug discovery.
