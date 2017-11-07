@@ -8,10 +8,13 @@ keywords:
 - Deepmind
 disqusIdentifier: vksbhandary-why-alphago-zero-performs-so-well
 sitemap: false
-coverImage: alphagozero.png
+coverImage: https://vikasbhandary.com.np/assets/images/alphagozero.png
+thumbnailImage: https://vikasbhandary.com.np/assets/images/alphagozero_thumb.png
+
+thumbnailImagePosition: left
 coverMeta: out
 metaAlignment: center
-coverSize: full
+coverSize: partial
 
 ---
 [Deepmind's](https://deepmind.com/) [alphago](https://deepmind.com/research/alphago/) made a huge leap in history of computer science, when it defeated world's top professional players in march 2016, which was previously believed to be at least a decade away. But it didnt stop there, latest evolution of alphago called ["AlphaGO Zero"](https://www.nature.com/articles/nature24270.epdf?author_access_token=VJXbVjaSHxFoctQQ4p2k4tRgN0jAjWel9jnR3ZoTv0PVW4gB86EEpGqTRDtpIz-2rmo8-KG06gqVobU5NSCFeHILHcVFUeMsbvwS-lxjqQGg98faovwjxeTUgZAUMnRQ) has gone many steps further than its previous version as it has reached superhuman performance, winning 100–0 against the previous champoin AlphaGo. 
