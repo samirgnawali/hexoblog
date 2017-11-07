@@ -38,7 +38,7 @@ In short, the algorithm was made more general and it didn't even used human gene
 AlphaGo Zero outperformed [AlphaGo Lee](https://www.nature.com/articles/nature24270.epdf?author_access_token=VJXbVjaSHxFoctQQ4p2k4tRgN0jAjWel9jnR3ZoTv0PVW4gB86EEpGqTRDtpIz-2rmo8-KG06gqVobU5NSCFeHILHcVFUeMsbvwS-lxjqQGg98faovwjxeTUgZAUMnRQ) only after 36 hours of training, which was trained for several months. After continuous training for 72 hours AlphaGo Zero defeted the version of AlphaGo which defeated Lee Sedol. AlphaGo Lee was trained on a network of machines using 48 tensor processing units (TPUs) whereas AlphaGo Zero was trained on a single machine using 4 TPUs only.
 
 
-{% image center fig-100 https://storage.googleapis.com/deepmind-live-cms/images/AlphaGo%2520Efficiency.width-1500.png  "Source Deepmind blog [post](https://deepmind.com/blog/alphago-zero-learning-scratch/) " %}
+{% image center fig-100 https://storage.googleapis.com/deepmind-live-cms/images/AlphaGo%2520Efficiency.width-1500.png  "Source Deepmind blog  post" %}
 
 ### Why it worked?
 #### Less complex algorithm
