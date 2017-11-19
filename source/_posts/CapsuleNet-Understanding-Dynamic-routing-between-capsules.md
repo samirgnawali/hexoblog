@@ -64,7 +64,7 @@ CapsuleNet uses a non-linear __"squashing"__ function to ensure that short vecto
 {% image center fig-100 https://vikasbhandary.com.np/assets/images/CapsuleNet_alg.jpg "Diagram 5: pseudo code for the dynamic routing" %}
 
 
-# Working of a capsule: Simplefied
+# Working of a capsule: Simplified
 
 {% image center fig-100 https://cdn-images-1.medium.com/max/1000/1*GbmQ2X9NQoGuJ1M-EOD67g.png "Diagram 6: Summary of the internal workings of the capsule. Note that there is no bias because it is already included in the W matrix that can accommodate it and other, more complex transforms and relationships." %}
 
@@ -98,8 +98,7 @@ This step is similar to the regular artificial neuron and represents combination
 ## Vector-to-vector nonlinearity
 This is another unique approach introduced in CapsuleNet, it uses non-linear activation function, refered to as __squash__ function in Diagram 5. This function ensures that short vectors get shrunk to almost zero length and long vectors get shrunk to a length slightly below 1. 
 
-
+{% alert info %}
 Resources:
 I have used a lot of images and concepts from [this](https://medium.com/@pechyonkin/understanding-hintons-capsule-networks-part-ii-how-capsules-work-153b6ade9f66) [post](https://hackernoon.com/capsule-networks-are-shaking-up-ai-heres-how-to-use-them-c233a0971952), [paper](https://arxiv.org/abs/1710.09829v1) and [video](https://youtu.be/rTawFwUvnLE). For code visit [link1](https://github.com/deepblacksky/capsnet-tensorflow) and [link2](https://www.kaggle.com/kmader/capsulenet-on-mnist).
-
-
+{% endalert %}
