@@ -1,0 +1,626 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Personal blog">
+    <title>CapsuleNet: Understanding Dynamic routing between capsules - Personal blog</title>
+    <meta name="author" content="Vikas Bhandary">
+    
+        <meta name="keywords" content="vikas bhandary,programming blog,nepal developpers,machine learning blog,nepali freelancer,CapsuleNet,Dynamic routing,Capsule,CNN,Image processing">
+    
+    
+        <link rel="icon" href="https://vikasbhandary.com.np/assets/images/fav.jpg">
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="There are few weaknesses of Convonutional Neural Networks (CNN), which Geoffery Hilton mentioned in his famous his famous talk about what is wrongs with CNNs few months ago. Recently a paper introduce">
+<meta name="keywords" content="CapsuleNet,Dynamic routing,Capsule,CNN,Image processing">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="CapsuleNet: Understanding Dynamic routing between capsules">
+<meta property="og:url" content="https://vikasbhandary.com.np/CapsuleNet-Understanding-Dynamic-routing-between-capsules/index.html">
+<meta property="og:site_name" content="Personal blog">
+<meta property="og:description" content="There are few weaknesses of Convonutional Neural Networks (CNN), which Geoffery Hilton mentioned in his famous his famous talk about what is wrongs with CNNs few months ago. Recently a paper introduce">
+<meta property="og:image" content="https://vikasbhandary.com.np/assets/images/picasso.jpg">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/800/1*pTu8CbnA_MzRbTh6Ia87hA.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1000/1*nUJl2W-YVHPIxykzpixmkA.jpeg">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/800/1*0NxktTeAhqNyRa411M3LXA.jpeg">
+<meta property="og:image" content="https://vikasbhandary.com.np/assets/images/CapsuleNet_alg.jpg">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1000/1*GbmQ2X9NQoGuJ1M-EOD67g.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/800/1*I0i5nlFe9pd1LQ5VmOohYQ.png">
+<meta property="og:updated_time" content="2017-11-19T14:31:39.220Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CapsuleNet: Understanding Dynamic routing between capsules">
+<meta name="twitter:description" content="There are few weaknesses of Convonutional Neural Networks (CNN), which Geoffery Hilton mentioned in his famous his famous talk about what is wrongs with CNNs few months ago. Recently a paper introduce">
+<meta name="twitter:image" content="https://vikasbhandary.com.np/assets/images/picasso.jpg">
+<meta name="twitter:creator" content="@vksbhandary">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://vikasbhandary.com.np/assets/images/profile.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-p7g6grkzawwpss3wwedbtyxwyhhtyby41uqwe2oh3xh5byvp52fxwy6x4aj8.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-108920781-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+     <div id="blog">
+            
+                <!-- Define author's picture -->
+
+
+        <header id="header" data-behavior="5">
+            <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+            <div class="header-title">
+                <a class="header-title-link" href="/ ">Personal blog</a>
+            </div>
+            
+                
+                    <a  class="header-right-icon open-algolia-search"
+                        href="#search">
+                
+                
+                    <i class="fa fa-lg fa-search"></i>
+                
+                </a>
+            
+        </header>
+                 <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/about">
+                    <img class="sidebar-profile-picture" src="/assets/images/profile.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">Vikas Bhandary</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>Machine learning Enthusiast. Love creating things</p>
+</h5>
+                
+            </div>
+        
+        <ul class="sidebar-social">
+        <li class="sidebar-button">
+        
+        
+             
+                        <a  class="sidebar-button-link " href="https://github.com/vksbhandary/" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                       <!-- <span class="sidebar-button-desc">GitHub</span> -->
+                    </a>   
+        
+             
+                        <a  class="sidebar-button-link " href="https://twitter.com/vksbhandary" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                       <!-- <span class="sidebar-button-desc">Twitter</span> -->
+                    </a>   
+        
+             
+                        <a  class="sidebar-button-link " href="https://www.linkedin.com/in/vksbhandary/" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+                       <!-- <span class="sidebar-button-desc">LinkedIn</span> -->
+                    </a>   
+        
+             
+                        <a  class="sidebar-button-link " href="mailto:vksbhandary@gmail.com" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                       <!-- <span class="sidebar-button-desc">Mail</span> -->
+                    </a>   
+        
+                    
+            </li>
+            
+        </ul>
+         <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+                 
+                    <div id="main" data-behavior="5"
+                         class="
+                                hasCoverMetaIn
+                                ">
+                        
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            CapsuleNet: Understanding Dynamic routing between capsules
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-11-19T14:17:55+00:00">
+	
+		    Nov 19, 2017
+    	
+    </time>
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>There are few weaknesses of Convonutional Neural Networks (CNN), which <strong>Geoffery Hilton</strong> mentioned in his famous his famous talk about <strong><a href="https://www.youtube.com/watch?v=rTawFwUvnLE" target="_blank" rel="external">what is wrongs with CNNs</a></strong> few months ago. Recently a <a href="https://arxiv.org/abs/1710.09829v1" target="_blank" rel="external">paper</a> introduced a completely new type of neural network CapsuleNet, based on so-called capsules. A capsule is a group of neurons whose outputs represent different properties of the same entity. These network use “Dynamic Routing Between Capsules”. CapsuleNet has gained wide attention, because these papers introduce completely new method, which is most likely to improve overall performance and accuracy of Deep learning algorithms in coming future.<br><a id="more"></a>(Note: I won’t cover mathematical equation or programming, but i have mentioned used equation for clarifications.)<br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CNN-Quick-intro"><span class="toc-text">CNN: Quick intro</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Difference-between-CNN-and-CapsuleNet"><span class="toc-text">Difference between CNN and CapsuleNet</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Disadvantage-of-CNN"><span class="toc-text">Disadvantage of CNN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CapsuleNet-Network-architechture"><span class="toc-text">CapsuleNet: Network architechture</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Calculations"><span class="toc-text">Calculations</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Working-of-a-capsule-Simplefied"><span class="toc-text">Working of a capsule: Simplefied</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Matrix-multiplication-of-input-vectors"><span class="toc-text">Matrix multiplication of input vectors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scalar-weighting-of-input-vectors"><span class="toc-text">Scalar weighting of input vectors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sum-of-weighted-input-vectors"><span class="toc-text">Sum of weighted input vectors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vector-to-vector-nonlinearity"><span class="toc-text">Vector-to-vector nonlinearity</span></a></li></ol></li></ol></p>
+<h1 id="CNN-Quick-intro"><a href="#CNN-Quick-intro" class="headerlink" title="CNN: Quick intro"></a>CNN: Quick intro</h1><p>Main component of CNN is convolutional layer, these layers learn and detect main features of an image using pixel input. These layers are stacked up to learn and detect even more complex features. Layers close to input learn simple features whereas higher layer combine simple features into more complex features. Higher-level features combine lower-level features as a weighted sum: activations of a preceding layer are multiplied by the following layer neuron’s weights and added, before being passed to activation nonlinearity. (For more detailed study visit <a href="http://cs231n.github.io/convolutional-networks/" target="_blank" rel="external">link</a>)</p>
+<h1 id="Difference-between-CNN-and-CapsuleNet"><a href="#Difference-between-CNN-and-CapsuleNet" class="headerlink" title="Difference between CNN and CapsuleNet"></a>Difference between CNN and CapsuleNet</h1><ul>
+<li>CapsuleNet layers is divided into a group of Neural Network called as Capsule, instead of single neural network. These neurons have same activity vector which represents the instantiation parameters of a specific type of entity such as an object or an object part.</li>
+<li>CNN uses <a href="http://ufldl.stanford.edu/tutorial/supervised/Pooling/" target="_blank" rel="external">Max pooing</a> for discretization, which is sample-based discretization process. It’s objective is to reduce dimentionality of input representation and reduce chances of overfitting by providing abstract representation of images by allowing neurons in one layer to ignore all but the most active feature detector in a local pool in the layer below [<a href="https://www.quora.com/What-is-max-pooling-in-convolutional-neural-networks" target="_blank" rel="external">num</a>, <a href="">paper</a>]. </li>
+<li>CapsuleNet uses “<strong>Routing by agreement</strong>“ approach, in which output is routed to all possible parents but it is scaleddown by coupling coefficients that sum to 1. For each possible parent, the capsule computes a “prediction vector” by multiplying its own output by a weight matrix.</li>
+<li>In standard deep neural networks like AlexNet and ResNet pooling between layers that downsample is a MAX operation. But in CapsuleNet, each layer learns how to pool dynamically and mimic Hebbian learning (more detail in <a href="https://medium.com/mlreview/deep-neural-network-capsules-137be2877d44" target="_blank" rel="external">link</a>).</li>
+<li>CapsuleNet is capable of learning to achieve state-of-the art performance by only using a fraction of the data that a CNN would use.</li>
+</ul>
+<h1 id="Disadvantage-of-CNN"><a href="#Disadvantage-of-CNN" class="headerlink" title="Disadvantage of CNN"></a>Disadvantage of CNN</h1><p>CNN has two disadvantages:<br>– (1) Pooling in CNN gives away small amount of transitional invariance at each layer, therefore precise location of the most active feature is lost. Due to this reason a CNN classifier can classify <a href="https://jhui.github.io/assets/capsule/picasso.jpg" target="_blank" rel="external">Picasso’s “Portrait of woman in d`hermine”</a> as a human face, which isnt true.<br>– (2) CNNs cannot extrapolate their understanding of geometric relationships to radically new viewpoints. For example in Diagram 3, there are multiple images of tower of liberty. For a CNN, it is really hard to recognize as same image because it does not have this build-in understanding of 3D space, but for a CapsNet it is much easier because these relationships are explicitly modeled. The <a href="https://openreview.net/pdf?id=HJWLfGWRb" target="_blank" rel="external">paper</a> that uses this approach was able to cut error rate by 45% as compared to the previous state of the art, which is a huge improvement [<a href="https://medium.com/@pechyonkin/understanding-hintons-capsule-networks-part-i-intuition-b4b559d1159b" target="_blank" rel="external">link</a>]. (for more see Geoffery Hilton’s famous his famous talk about <a href="https://www.youtube.com/watch?v=rTawFwUvnLE" target="_blank" rel="external">what is wrongs with CNNs</a>)</p>
+<div class="figure center fig-100" style="width:;"><img class="fig-img" src="https://vikasbhandary.com.np/assets/images/picasso.jpg" alt="Diagram 1: Portrait of woman in d`hermine"><span class="caption">Diagram 1: Portrait of woman in d`hermine</span></div>
+<div class="figure center fig-100" style="width:;"><img class="fig-img" src="https://cdn-images-1.medium.com/max/800/1*pTu8CbnA_MzRbTh6Ia87hA.png" alt="Diagram 2: To a CNN, both pictures are similar, since they both contain similar elements."><span class="caption">Diagram 2: To a CNN, both pictures are similar, since they both contain similar elements.</span></div>
+<div class="figure center fig-100" style="width:;"><img class="fig-img" src="https://cdn-images-1.medium.com/max/1000/1*nUJl2W-YVHPIxykzpixmkA.jpeg" alt="Diagram 3: To a CNN, both pictures are similar, since they both contain similar elements."><span class="caption">Diagram 3: To a CNN, both pictures are similar, since they both contain similar elements.</span></div>
+<h1 id="CapsuleNet-Network-architechture"><a href="#CapsuleNet-Network-architechture" class="headerlink" title="CapsuleNet: Network architechture"></a>CapsuleNet: Network architechture</h1><div class="figure center fig-100" style="width:;"><img class="fig-img" src="https://cdn-images-1.medium.com/max/800/1*0NxktTeAhqNyRa411M3LXA.jpeg" alt="Diagram 4: CapsNet, the neural network using capsules"><span class="caption">Diagram 4: CapsNet, the neural network using capsules</span></div>
+<p>The architecture is shallow with only two convolutional layers and one fully connected layer. Conv1 has 256, 9x9 convolution kernels with a stride of 1 and ReLU activation. This layer converts pixel intensities to the activities of local feature detectors that are then used as inputs to the primary capsules.<br>The second layer (PrimaryCapsules) is a convolutional capsule layer with 32 channels of convolutional 8D capsules (i.e. each primary capsule contains 8 convolutional units with a 9x9 kernel and a stride of 2). The final Layer (DigitCaps) has one 16D capsule per digit class and each of these capsules receives input from all the capsules in the layer below.</p>
+<p>In the above diagram, Dynamic routing occurs between PrimaryCaps and DigitCaps. No routing is used between Conv1 and PrimaryCapsules.</p>
+<h1 id="Calculations"><a href="#Calculations" class="headerlink" title="Calculations"></a>Calculations</h1><p>CapsuleNet uses a non-linear <strong>“squashing”</strong> function to ensure that short vectors get shrunk to almost zero length and long vectors get shrunk to a length slightly below 1 (given in eq 1 in <a href="https://arxiv.org/abs/1710.09829v1" target="_blank" rel="external">paper</a>). For all but the first layer of capsules, the total input to each capsule is a weighted sum over all “prediction vectors” from the capsules in the layer below which is produced by using eq 2 in <a href="https://arxiv.org/abs/1710.09829v1" target="_blank" rel="external">paper</a>. The coupling coefficients between a capsule and all the capsules in the layer above sum to 1 and are determined by a “routing softmax”. The initial coupling coefficients are then iteratively refined by measuring the agreement between the current output of each capsule, in the layer above and the prediction made by that capsule. [<a href="https://arxiv.org/abs/1710.09829v1" target="_blank" rel="external">num</a>]</p>
+<div class="figure center fig-100" style="width:;"><img class="fig-img" src="https://vikasbhandary.com.np/assets/images/CapsuleNet_alg.jpg" alt="Diagram 5: pseudo code for the dynamic routing"><span class="caption">Diagram 5: pseudo code for the dynamic routing</span></div>
+<h1 id="Working-of-a-capsule-Simplefied"><a href="#Working-of-a-capsule-Simplefied" class="headerlink" title="Working of a capsule: Simplefied"></a>Working of a capsule: Simplefied</h1><div class="figure center fig-100" style="width:;"><img class="fig-img" src="https://cdn-images-1.medium.com/max/1000/1*GbmQ2X9NQoGuJ1M-EOD67g.png" alt="Diagram 6: Summary of the internal workings of the capsule. Note that there is no bias because it is already included in the W matrix that can accommodate it and other, more complex transforms and relationships."><span class="caption">Diagram 6: Summary of the internal workings of the capsule. Note that there is no bias because it is already included in the W matrix that can accommodate it and other, more complex transforms and relationships.</span></div>
+<p>The <a href="https://medium.com/@pechyonkin/understanding-hintons-capsule-networks-part-ii-how-capsules-work-153b6ade9f66" target="_blank" rel="external">post</a> compares working of traditional neuron and capsule. In order to explain working of capsule let us assume we have a simple model as shown in Diagram 6, which is being used to detect a face. Inputs u1, u2 and u3 are the outputs of capsules from lower layer.</p>
+<p>Following are the 4 computational steps happening inside the capsule.</p>
+<h2 id="Matrix-multiplication-of-input-vectors"><a href="#Matrix-multiplication-of-input-vectors" class="headerlink" title="Matrix multiplication of input vectors"></a>Matrix multiplication of input vectors</h2><p>The length of input vectors u1, u2 and u3 corresponds to probability that the lower layer capsules detect objects, and direction of vector corresponds to the internal states of those objects. These vectors are multiplied using corresponding weight matrices W. This weight matrices W, encodes important spatial and other relationships between lower level features and higher level features. In our case lower level features are eyes, nose and mouth, and higher level features is face. After multiplication we get the predicted position of higher level features. In our case vector û1 û2 and û3, represent where face should be according to detected position of eyes, nose and mouth. </p>
+<h2 id="Scalar-weighting-of-input-vectors"><a href="#Scalar-weighting-of-input-vectors" class="headerlink" title="Scalar weighting of input vectors"></a>Scalar weighting of input vectors</h2><p>This step is somewhat similar to the method used in artificial neural networks, where the weights of inputs are learned using backpropagation. In CNN scalar weighting of input vectors is done using max pooling but in Capsules this is done using “<strong>Dynamic routing</strong>“ or “<strong>Routing by agreement</strong>“. </p>
+<div class="figure center fig-100" style="width:;"><img class="fig-img" src="https://cdn-images-1.medium.com/max/800/1*I0i5nlFe9pd1LQ5VmOohYQ.png" alt="Diagram 7: Basics of dynamic routing"><span class="caption">Diagram 7: Basics of dynamic routing</span></div>
+<p>In order to understand dynamic routing, lets understand the basic concept first. Initially the lower level capsules sends prior information, then as the time progresses, and coupling coefficient get updated the capsules with more relevent information forms parse tree as shown in Diagram 7. For example images with circle as low level details links with eye or car headlights etc but not probabily with fridge. (for more indepth explanation read <a href="https://medium.com/@pechyonkin/understanding-hintons-capsule-networks-part-ii-how-capsules-work-153b6ade9f66" target="_blank" rel="external">post</a> or watch <a href="https://youtu.be/rTawFwUvnLE?t=36m39s" target="_blank" rel="external">video</a>)</p>
+<p>The <a href="https://arxiv.org/abs/1710.09829v1" target="_blank" rel="external">paper</a> describes:</p>
+<blockquote>
+<p>Initially, the output is routed to all possible parents but is scaled down by coupling coefficients that sum to 1. For each possible parent, the capsule computes a “prediction vector” by multiplying its own output by a weight matrix. If this prediction vector has a large scalar product with the output of a possible parent, there is top-down feedback which increases the coupling coefficient for that parent and decreasing it for other parents.</p>
+</blockquote>
+<p>Top-down feedback is used to update the coupling coefficient of outputs of parent capsules. This coeffient depends on the scalar product of prediction vector and activity vector. In our case, coupling coefficient for capsules 1, 2 and 3 depends on scalar product of û1 and v1, û2 and v2 and û3 and v3. In <a href="https://arxiv.org/abs/1710.09829v1" target="_blank" rel="external">paper</a>, equation (3) describes the method of calculate coupling coefficient between capsule i and all the capsules in the layer above, where bij is the scalar product of prediction vector of capsule i and activity vector of capsule j from layer l+1. This is refered to as “<strong>routing softmax</strong>“ in the paper. The value of bij is iteratively refined as shown in Diagram 5 and in <a href="https://jhui.github.io/2017/11/03/Dynamic-Routing-Between-Capsules/" target="_blank" rel="external">link</a>.</p>
+<h2 id="Sum-of-weighted-input-vectors"><a href="#Sum-of-weighted-input-vectors" class="headerlink" title="Sum of weighted input vectors"></a>Sum of weighted input vectors</h2><p>This step is similar to the regular artificial neuron and represents combination of inputs. Sum of weighted input vectors of capsule j, Sj, can be calculated using eqation (2) of <a href="https://arxiv.org/abs/1710.09829v1" target="_blank" rel="external">paper</a>, which is simple summation of product of coupling coefficient and input vectors. </p>
+<h2 id="Vector-to-vector-nonlinearity"><a href="#Vector-to-vector-nonlinearity" class="headerlink" title="Vector-to-vector nonlinearity"></a>Vector-to-vector nonlinearity</h2><p>This is another unique approach introduced in CapsuleNet, it uses non-linear activation function, refered to as <strong>squash</strong> function in Diagram 5. This function ensures that short vectors get shrunk to almost zero length and long vectors get shrunk to a length slightly below 1. </p>
+<p>Resources:<br>I have used a lot of images and concepts from <a href="https://medium.com/@pechyonkin/understanding-hintons-capsule-networks-part-ii-how-capsules-work-153b6ade9f66" target="_blank" rel="external">this</a> <a href="https://hackernoon.com/capsule-networks-are-shaking-up-ai-heres-how-to-use-them-c233a0971952" target="_blank" rel="external">post</a>, <a href="https://arxiv.org/abs/1710.09829v1" target="_blank" rel="external">paper</a> and <a href="https://youtu.be/rTawFwUvnLE" target="_blank" rel="external">video</a>. For code visit <a href="https://github.com/deepblacksky/capsnet-tensorflow" target="_blank" rel="external">link1</a> and <a href="https://www.kaggle.com/kmader/capsulenet-on-mnist" target="_blank" rel="external">link2</a>.</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/CapsuleNet/">CapsuleNet</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Why-alphago-zero-performs-so-well/" data-tooltip="Why AlphaGo zero performs so well">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://vikasbhandary.com.np/CapsuleNet-Understanding-Dynamic-routing-between-capsules/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://vikasbhandary.com.np/CapsuleNet-Understanding-Dynamic-routing-between-capsules/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://vikasbhandary.com.np/CapsuleNet-Understanding-Dynamic-routing-between-capsules/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                        <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 Vikas Bhandary. All Rights Reserved.
+    </span>
+</footer>
+
+                    </div>
+                    
+                        <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Why-alphago-zero-performs-so-well/" data-tooltip="Why AlphaGo zero performs so well">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://vikasbhandary.com.np/CapsuleNet-Understanding-Dynamic-routing-between-capsules/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://vikasbhandary.com.np/CapsuleNet-Understanding-Dynamic-routing-between-capsules/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://vikasbhandary.com.np/CapsuleNet-Understanding-Dynamic-routing-between-capsules/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                        </div>
+                        <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://vikasbhandary.com.np/CapsuleNet-Understanding-Dynamic-routing-between-capsules/">
+                    <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://vikasbhandary.com.np/CapsuleNet-Understanding-Dynamic-routing-between-capsules/">
+                    <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://vikasbhandary.com.np/CapsuleNet-Understanding-Dynamic-routing-between-capsules/">
+                    <i class="fa fa-google-plus"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+                    
+                
+                 
+            
+    </div>
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://vikasbhandary.com.np/Create-your-own-Free-Blog-Site/">
+                            <h3 class="media-heading">Create your own Free Blog Site</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Oct 30, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>There are a lot of blogging platfroms like <a href="https://wordpress.com/" target="_blank" rel="external">wordpress</a> and <a href="https://www.blogger.com" target="_blank" rel="external">blogger</a>. Personally, I was never satisfied with the flexibility of these platforms. So I always wanted a free option to create and maintain blogs. </p>
+<p>We can create and maintain our own blog by using site <a href="https://www.netlify.com/" target="_blank" rel="external">Netlify</a>. It is basically a frontend hosting site, with a lot of cool features. It lets us create simple websites free of cost and it provides many advanced features for paid users. To create a blog like the one you are visiting right now for free, we will be using <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a> which is a fast, simple &amp; powerful blog framework.</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://vikasbhandary.com.np/Why-alphago-zero-performs-so-well/">
+                            <h3 class="media-heading">Why AlphaGo zero performs so well</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Nov 6, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p><a href="https://deepmind.com/" target="_blank" rel="external">Deepmind’s</a> <a href="https://deepmind.com/research/alphago/" target="_blank" rel="external">AlphaGo</a> made a huge leap in history of computer science, when it defeated world’s top professional players in march 2016, which was previously believed to be at least a decade away. But it didnt stop there, latest evolution of AlphaGo called <a href="https://www.nature.com/articles/nature24270.epdf?author_access_token=VJXbVjaSHxFoctQQ4p2k4tRgN0jAjWel9jnR3ZoTv0PVW4gB86EEpGqTRDtpIz-2rmo8-KG06gqVobU5NSCFeHILHcVFUeMsbvwS-lxjqQGg98faovwjxeTUgZAUMnRQ" target="_blank" rel="external">“AlphaGO Zero”</a> has gone many steps further than its previous version as it has reached superhuman performance, winning 100–0 against the previous champion AlphaGo. </p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://vikasbhandary.com.np/CapsuleNet-Understanding-Dynamic-routing-between-capsules/">
+                            <h3 class="media-heading">CapsuleNet: Understanding Dynamic routing between capsules</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Nov 19, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>There are few weaknesses of Convonutional Neural Networks (CNN), which <strong>Geoffery Hilton</strong> mentioned in his famous his famous talk about <strong><a href="https://www.youtube.com/watch?v=rTawFwUvnLE" target="_blank" rel="external">what is wrongs with CNNs</a></strong> few months ago. Recently a <a href="https://arxiv.org/abs/1710.09829v1" target="_blank" rel="external">paper</a> introduced a completely new type of neural network CapsuleNet, based on so-called capsules. A capsule is a group of neurons whose outputs represent different properties of the same entity. These network use “Dynamic Routing Between Capsules”. CapsuleNet has gained wide attention, because these papers introduce completely new method, which is most likely to improve overall performance and accuracy of Deep learning algorithms in coming future.<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                3 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover-v1.2.0.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-zuepwttrji58qepz3qxnihs48j3c8z5jhhz8pnsmiosj3uvulbeuddpcqafp.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'https://vikasbhandary.com.np/CapsuleNet-Understanding-Dynamic-routing-between-capsules/';
+                 
+                    this.page.identifier = 'vksbhandary-capsulenet-understanding-dynamic-routing';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'vksbhandary';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script>
+        var algoliaClient = algoliasearch('3NSJ951A28', '98213b2aded47f5f92c6507571bfaf73');
+        var algoliaIndex = algoliaClient.initIndex('vikku-hexo-blog');
+    </script>
+
+    </body>
+</html>
