@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://vikasbhandary.com.np/"/>
-  <updated>2017-11-19T15:20:15.730Z</updated>
+  <updated>2017-11-19T15:54:04.084Z</updated>
   <id>https://vikasbhandary.com.np/</id>
   
   <author>
@@ -20,9 +20,11 @@
     <link href="https://vikasbhandary.com.np/CapsuleNet-Understanding-Dynamic-routing-between-capsules/"/>
     <id>https://vikasbhandary.com.np/CapsuleNet-Understanding-Dynamic-routing-between-capsules/</id>
     <published>2017-11-19T14:17:55.000Z</published>
-    <updated>2017-11-19T15:20:15.730Z</updated>
+    <updated>2017-11-19T15:54:04.084Z</updated>
     
-    <content type="html"><![CDATA[<p>There are few weaknesses of Convonutional Neural Networks (CNN), which <strong>Geoffery Hilton</strong> mentioned in his famous talk about <strong><a href="https://www.youtube.com/watch?v=rTawFwUvnLE" target="_blank" rel="external">what is wrongs with CNNs</a></strong> few months ago. Recently a <a href="https://arxiv.org/abs/1710.09829v1" target="_blank" rel="external">paper</a> introduced a completely new type of neural network CapsuleNet, based on so-called capsules. A capsule is a group of neurons whose outputs represent different properties of the same entity. These network use “Dynamic Routing Between Capsules”. CapsuleNet has gained wide attention, because it introduces a completely new method, which is most likely to improve overall performance and accuracy of Deep learning algorithms in coming future.<br><a id="more"></a>(Note: I won’t cover mathematical equation or programming, but i have mentioned used equation for clarifications.)<br><!-- toc --></p>
+    <content type="html"><![CDATA[<p>There are many weaknesses of Convonutional Neural Networks (CNN), which <strong>Geoffery Hilton</strong> mentioned in his famous talk <strong><a href="https://www.youtube.com/watch?v=rTawFwUvnLE" target="_blank" rel="external">what is wrongs with CNNs?</a></strong>. Recently published <a href="https://arxiv.org/abs/1710.09829v1" target="_blank" rel="external">paper</a> introduced neural network “CapsuleNet”, based on so-called capsules. A capsule is a group of neurons whose outputs represent different properties of the same entity. These network use Dynamic Routing Between Capsules. CapsuleNet has gained much attention, because it introduces a completely new method, which is most likely to improve overall performance and accuracy of Deep learning algorithms in coming future.<br><a id="more"></a></p>
+<div class="alert alert-info"><i class="fa fa-info"></i>  Note: I haven't covered mathematical equation or programming, but i have mentioned used equation for clarifications.</div>
+<!-- toc -->
 <h1 id="CNN-Quick-intro"><a href="#CNN-Quick-intro" class="headerlink" title="CNN: Quick intro"></a>CNN: Quick intro</h1><p>Main component of CNN is convolutional layer, these layers learn and detect main features of an image using pixel input. These layers are stacked up to learn and detect even more complex features. Layers close to input learn simple features whereas higher layer combine simple features into more complex features. Higher-level features combine lower-level features as a weighted sum: activations of a preceding layer are multiplied by the following layer neuron’s weights and added, before being passed to activation nonlinearity. (For more detailed study visit <a href="http://cs231n.github.io/convolutional-networks/" target="_blank" rel="external">link</a>)</p>
 <h1 id="Difference-between-CNN-and-CapsuleNet"><a href="#Difference-between-CNN-and-CapsuleNet" class="headerlink" title="Difference between CNN and CapsuleNet"></a>Difference between CNN and CapsuleNet</h1><ul>
 <li>Instead of single neuron, layers of CapsuleNet consist of groups of Neurons called as Capsule. These neurons have same activity vector which represents the instantiation parameters of a specific type of entity such as an object or an object part.</li>
@@ -59,7 +61,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;There are few weaknesses of Convonutional Neural Networks (CNN), which &lt;strong&gt;Geoffery Hilton&lt;/strong&gt; mentioned in his famous talk about &lt;strong&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=rTawFwUvnLE&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;what is wrongs with CNNs&lt;/a&gt;&lt;/strong&gt; few months ago. Recently a &lt;a href=&quot;https://arxiv.org/abs/1710.09829v1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;paper&lt;/a&gt; introduced a completely new type of neural network CapsuleNet, based on so-called capsules. A capsule is a group of neurons whose outputs represent different properties of the same entity. These network use “Dynamic Routing Between Capsules”. CapsuleNet has gained wide attention, because it introduces a completely new method, which is most likely to improve overall performance and accuracy of Deep learning algorithms in coming future.&lt;br&gt;
+      &lt;p&gt;There are many weaknesses of Convonutional Neural Networks (CNN), which &lt;strong&gt;Geoffery Hilton&lt;/strong&gt; mentioned in his famous talk &lt;strong&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=rTawFwUvnLE&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;what is wrongs with CNNs?&lt;/a&gt;&lt;/strong&gt;. Recently published &lt;a href=&quot;https://arxiv.org/abs/1710.09829v1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;paper&lt;/a&gt; introduced neural network “CapsuleNet”, based on so-called capsules. A capsule is a group of neurons whose outputs represent different properties of the same entity. These network use Dynamic Routing Between Capsules. CapsuleNet has gained much attention, because it introduces a completely new method, which is most likely to improve overall performance and accuracy of Deep learning algorithms in coming future.&lt;br&gt;
     
     </summary>
     

@@ -14,8 +14,13 @@ sitemap: false
 ---
 
 
-There are few weaknesses of Convonutional Neural Networks (CNN), which __Geoffery Hilton__ mentioned in his famous talk about __[what is wrongs with CNNs](https://www.youtube.com/watch?v=rTawFwUvnLE)__ few months ago. Recently a [paper](https://arxiv.org/abs/1710.09829v1) introduced a completely new type of neural network CapsuleNet, based on so-called capsules. A capsule is a group of neurons whose outputs represent different properties of the same entity. These network use "Dynamic Routing Between Capsules". CapsuleNet has gained wide attention, because it introduces a completely new method, which is most likely to improve overall performance and accuracy of Deep learning algorithms in coming future.
-<!-- more -->(Note: I won't cover mathematical equation or programming, but i have mentioned used equation for clarifications.)
+There are many weaknesses of Convonutional Neural Networks (CNN), which __Geoffery Hilton__ mentioned in his famous talk __[what is wrongs with CNNs?](https://www.youtube.com/watch?v=rTawFwUvnLE)__. Recently published [paper](https://arxiv.org/abs/1710.09829v1) introduced neural network "CapsuleNet", based on so-called capsules. A capsule is a group of neurons whose outputs represent different properties of the same entity. These network use Dynamic Routing Between Capsules. CapsuleNet has gained much attention, because it introduces a completely new method, which is most likely to improve overall performance and accuracy of Deep learning algorithms in coming future.
+<!-- more -->
+
+{% alert info %}
+Note: I haven't covered mathematical equation or programming, but i have mentioned used equation for clarifications.
+{% endalert %}
+
 <!-- toc -->
 # CNN: Quick intro
 Main component of CNN is convolutional layer, these layers learn and detect main features of an image using pixel input. These layers are stacked up to learn and detect even more complex features. Layers close to input learn simple features whereas higher layer combine simple features into more complex features. Higher-level features combine lower-level features as a weighted sum: activations of a preceding layer are multiplied by the following layer neuron’s weights and added, before being passed to activation nonlinearity. (For more detailed study visit [link](http://cs231n.github.io/convolutional-networks/))
@@ -36,10 +41,13 @@ CNN has two disadvantages:
 {% image center fig-100 https://vikasbhandary.com.np/assets/images/picasso.jpg "Diagram 1: Portrait of woman in d`hermine" %}
 
 
+
 {% image center fig-100 https://cdn-images-1.medium.com/max/800/1*pTu8CbnA_MzRbTh6Ia87hA.png "Diagram 2: To a CNN, both pictures are similar, since they both contain similar elements." %}
 
 
+
 {% image center fig-100 https://cdn-images-1.medium.com/max/1000/1*nUJl2W-YVHPIxykzpixmkA.jpeg "Diagram 3: To a CNN, both pictures are similar, since they both contain similar elements." %}
+
 
 # CapsuleNet: Network architechture
 {% image center fig-100 https://cdn-images-1.medium.com/max/800/1*0NxktTeAhqNyRa411M3LXA.jpeg "Diagram 4: CapsNet, the neural network using capsules" %}
@@ -61,6 +69,7 @@ CapsuleNet uses a non-linear __"squashing"__ function to ensure that short vecto
 {% image center fig-100 https://cdn-images-1.medium.com/max/1000/1*GbmQ2X9NQoGuJ1M-EOD67g.png "Diagram 6: Summary of the internal workings of the capsule. Note that there is no bias because it is already included in the W matrix that can accommodate it and other, more complex transforms and relationships." %}
 
 
+
 The [post](https://medium.com/@pechyonkin/understanding-hintons-capsule-networks-part-ii-how-capsules-work-153b6ade9f66) compares working of traditional neuron and capsule. In order to explain working of capsule let us assume we have a simple model as shown in Diagram 6, which is being used to detect a face. Inputs u1, u2 and u3 are the outputs of capsules from lower layer.
 
 Following are the 4 computational steps happening inside the capsule.
@@ -72,6 +81,7 @@ The length of input vectors u1, u2 and u3 corresponds to probability that the lo
 This step is somewhat similar to the method used in artificial neural networks, where the weights of inputs are learned using backpropagation. In CNN scalar weighting of input vectors is done using max pooling but in Capsules this is done using "__Dynamic routing__" or "__Routing by agreement__". 
 
 {% image center fig-100 https://cdn-images-1.medium.com/max/800/1*I0i5nlFe9pd1LQ5VmOohYQ.png "Diagram 7: Basics of dynamic routing" %}
+
 
 In order to understand dynamic routing, lets understand the basic concept first. Initially the lower level capsules sends prior information, then as the time progresses, and coupling coefficient get updated the capsules with more relevent information forms parse tree as shown in Diagram 7. For example images with circle as low level details links with eye or car headlights etc but not probabily with fridge. (for more indepth explanation read [post](https://medium.com/@pechyonkin/understanding-hintons-capsule-networks-part-ii-how-capsules-work-153b6ade9f66) or watch [video](https://youtu.be/rTawFwUvnLE?t=36m39s))
 
