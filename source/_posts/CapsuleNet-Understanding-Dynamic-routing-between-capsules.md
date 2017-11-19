@@ -78,12 +78,12 @@ Following are the 4 computational steps happening inside the capsule.
 The length of input vectors u1, u2 and u3 corresponds to probability that the lower layer capsules detect objects, and direction of vector corresponds to the internal states of those objects. These vectors are multiplied using corresponding weight matrices W. This weight matrices W, encodes important spatial and other relationships between lower level features and higher level features. In our case lower level features are eyes, nose and mouth, and higher level features is face. After multiplication we get the predicted position of higher level features. In our case vector û1 û2 and û3, represent where face should be according to detected position of eyes, nose and mouth. 
 
 ## Scalar weighting of input vectors
-This step is somewhat similar to the method used in artificial neural networks, where the weights of inputs are learned using backpropagation. In CNN scalar weighting of input vectors is done using max pooling but in Capsules this is done using "__Dynamic routing__" or "__Routing by agreement__". 
+This step is somewhat similar to the method used in artificial neural networks, where the weights of inputs are learned using backpropagation. In CNN scalar weighting of input vectors is done using max pooling but in Capsules this is done using "__Dynamic routing__" (also named as "__Routing by agreement__"). 
 
 {% image center fig-100 https://cdn-images-1.medium.com/max/800/1*I0i5nlFe9pd1LQ5VmOohYQ.png "Diagram 7: Basics of dynamic routing" %}
 
 
-In order to understand dynamic routing, lets understand the basic concept first. Initially the lower level capsules sends prior information, then as the time progresses the coupling coefficient gets updated and the capsules with more relevent information forms parse tree. In other words after training process, the capsules with lower features are only connected to those whose information is relevent to representation of higher level capsules. For example images with circle as low level details links with eye or car headlights etc but not probabily with fridge. The coupling coefficient for linked capsules becomes slightly less than 1.  In Diagram 7, lower level capsule is connected to capsule K, hence the coupling coefficient between lower level capsule and capsule K would be slightly less than 1.  (for more indepth explanation read [post](https://medium.com/@pechyonkin/understanding-hintons-capsule-networks-part-ii-how-capsules-work-153b6ade9f66) or watch [video](https://youtu.be/rTawFwUvnLE?t=36m39s))
+In order to understand dynamic routing, lets understand the basic concept first. Initially the lower level capsules sends prior information, then as the time progresses the coupling coefficient gets updated and the capsules with more relevent information forms parse tree. In other words after training process, the capsules with lower features are only connected to those whose information is relevent to representation of higher level capsules. For example images with circle as low level details links with eye or car headlights etc but not probably with fridge. The coupling coefficient for linked capsules becomes slightly less than 1.  In Diagram 7, lower level capsule is connected to capsule K, hence the coupling coefficient between lower level capsule and capsule K would be slightly less than 1.  (for more indepth explanation read [post](https://medium.com/@pechyonkin/understanding-hintons-capsule-networks-part-ii-how-capsules-work-153b6ade9f66) or watch [video](https://youtu.be/rTawFwUvnLE?t=36m39s))
 
 The [paper](https://arxiv.org/abs/1710.09829v1) states:
 
@@ -93,7 +93,7 @@ Top-down feedback is used to update the coupling coefficient of outputs of paren
 
 
 ## Sum of weighted input vectors
-This step is similar to the regular artificial neuron and represents combination of inputs. Sum of weighted input vectors of capsule j, Sj, can be calculated using eqation (2) of [paper](https://arxiv.org/abs/1710.09829v1), which is simple summation of product of coupling coefficient and input vectors. 
+This step is similar to the regular artificial neuron and represents combination of inputs. Sum of weighted input vectors of capsule j, Sj, can be calculated using eqation (2) of [paper](https://arxiv.org/abs/1710.09829v1), which is summation of product of coupling coefficient and input vectors. 
 
 ## Vector-to-vector nonlinearity
 This is another unique approach introduced in CapsuleNet, it uses non-linear activation function, refered to as __squash__ function in Diagram 5. This function ensures that short vectors get shrunk to almost zero length and long vectors get shrunk to a length slightly below 1. 
