@@ -1,9 +1,10 @@
 ---
-title: 'CapsuleNet: Understanding Dynamic routing between capsules'
+title: 'Capsule Network: Understanding Dynamic routing between capsules'
 date: 2017-11-19 14:17:55
 tags: CapsuleNet
 keywords:
 - CapsuleNet
+- CapsNet
 - Dynamic routing
 - Capsule
 - CNN
@@ -14,7 +15,7 @@ sitemap: false
 ---
 
 
-There are many weaknesses of Convonutional Neural Networks (CNN), which __Geoffery Hilton__ mentioned in his famous talk __[what is wrongs with CNNs?](https://www.youtube.com/watch?v=rTawFwUvnLE)__. Recently published [paper](https://arxiv.org/abs/1710.09829v1) introduced neural network "CapsuleNet", based on so-called capsules. A capsule is a group of neurons whose output represents different properties of the same entity. These network use Dynamic Routing Between Capsules. CapsuleNet has gained much attention, because it introduces a completely new method, which is most likely to improve overall performance and accuracy of Deep learning algorithms in coming future.
+There are many weaknesses of Convonutional Neural Networks (CNN), which __Geoffery Hilton__ mentioned in his famous talk __[what is wrongs with CNNs?](https://www.youtube.com/watch?v=rTawFwUvnLE)__. Recently published [paper](https://arxiv.org/abs/1710.09829v1) introduced neural network "CapsuleNet" (also named as "CapsNet"), based on so-called capsules. A capsule is a group of neurons whose output represents different properties of the same entity. These network use Dynamic Routing Between Capsules. CapsuleNet has gained much attention, because it introduces a completely new method, which is most likely to improve overall performance and accuracy of Deep learning algorithms in coming future.
 <!-- more -->
 
 {% alert info %}
